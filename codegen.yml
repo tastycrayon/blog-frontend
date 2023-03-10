@@ -1,0 +1,41 @@
+overwrite: true
+schema: "http://localhost:8080/query"
+documents:
+  - "src/lib/gql/*.graphql"
+generates:
+  src/lib/gql/generated.ts:
+    plugins:
+      - "typescript"
+      - "typescript-operations"
+      # - 'typescript-urql'
+      # - 'urql-svelte-operations-store'
+      - "typed-document-node"
+config:
+  withHooks: false
+  # use "import type" instead of "import"
+  useTypeImports: true
+  # # turn enums into types
+  enumsAsTypes: true
+
+  omitOperationSuffix: true
+  dedupeOperationSuffix: true
+  exportFragmentSpreadSubTypes: true
+  experimentalFragmentVariables: true
+  addUnderscoreToArgsType: true
+
+  # onlyOperationTypes: true
+  preResolveTypes: true
+
+  # namingConvention: keep
+
+  scalars:
+    UnsignedInt: number
+    URL: string
+    JSON: any # string | number | boolean | null | Array<Scalars['JSON']> | Scalars['JSONObject']
+    JSONObject: Record<string, any>
+    Date: string
+    DateTime: string
+
+hooks:
+  afterAllFileWrite:
+    - prettier --write

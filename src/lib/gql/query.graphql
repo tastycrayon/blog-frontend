@@ -1,0 +1,75 @@
+fragment AuthorImage on User {
+  user_image {
+    ID
+    image_title
+    image_url
+    thumbnail_url
+    height
+    width
+    created_at
+    updated_at
+  }
+}
+fragment PostImage on Post {
+  post_image {
+    ID
+    image_title
+    image_url
+    thumbnail_url
+    height
+    width
+  }
+}
+
+fragment AuthorPart on Post {
+  post_author {
+    ID
+    display_name
+    ...AuthorImage
+  }
+}
+
+query GetPosts($limit: Int!, $offset: Int!, $orderBy: String) {
+  getPosts(limit: $limit, offset: $offset, orderBy: $orderBy) {
+    ID
+    post_title
+    post_slug
+    post_content
+    ...AuthorPart
+    ...PostImage
+    updated_at
+    created_at
+  }
+}
+
+query GetPost($id: ID!) {
+  getPost(id: $id) {
+    ID
+    post_title
+    post_slug
+    post_content
+    ...AuthorPart
+    ...PostImage
+    updated_at
+    created_at
+  }
+}
+
+query GetPostBySlug($slug: String!) {
+  getPostBySlug(slug: $slug) {
+    ID
+    post_title
+    post_slug
+    post_content
+    ...AuthorPart
+    ...PostImage
+    updated_at
+    created_at
+  }
+}
+query LoginUser($emailOrUsername: String!, $password: String!) {
+  login(emailOrUsername: $emailOrUsername, password: $password) {
+    access_token
+    exp
+  }
+}
