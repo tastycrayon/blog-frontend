@@ -1,0 +1,28 @@
+import { GetPostsWithCategoryDocument } from "$lib/gql/generated";
+import type { GetPostsWithCategory, GetPostsWithCategoryVariables } from "$lib/gql/generated";
+import { client } from "$lib/client";
+import { error, type Load, } from "@sveltejs/kit";
+import type { PageLoad } from "./$types";
+
+export const load: Load = (async ({ url }) => {
+  const page = url.searchParams.get('page') || '1'
+  const current = Math.max(parseInt(page), 1)
+
+  let limit: number = 4; //change later
+  let offset: number = (current - 1) * limit;
+  try {
+    const { data, error: resError } = await client
+      .query<GetPostsWithCategory, GetPostsWithCategoryVariables>(GetPostsWithCategoryDocument, {
+        limit, offset, orderBy: "ASC"
+      })
+      .toPromise();
+    if (resError) throw error(501, resError as any);
+    if (!data?.getPostsWithCategory) throw error(501, ("Internal Error." as any));
+
+    return { posts: data.getPostsWithCategory, count: data.getPostCount, pagination: { current, limit, offset } }
+  } catch (err: any) {
+    throw error(err);
+  }
+}) satisfies PageLoad;
+
+// export const ssr = true;

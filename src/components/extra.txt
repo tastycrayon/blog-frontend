@@ -1,0 +1,94 @@
+// post processing
+    // const composer = new EffectComposer(renderer);
+    // const renderPass = new RenderPass(scene, camera);
+    // composer.addPass(renderPass);
+
+    // const bloomPass = new UnrealBloomPass(
+    //   new THREE.Vector2(width, height),
+    //   0.5,
+    //   0.3,
+    //   0.3
+    // );
+    // composer.addPass(bloomPass);
+    // ..extra
+    // const loader = new THREE.TextureLoader();
+    // let h = (height / 140) * 1.4;
+    // let w = (width / 140) * 1.4;
+    // const planeGM = new THREE.PlaneGeometry(w, h, 15, 9);
+    // planeGM.translate(0.0, 0.0, -0.7);
+    // const matGM = new THREE.MeshBasicMaterial({
+    //   map: loader.load(bg),
+    //   // transparent: true,
+    //   // opacity: 0.5,
+    // });
+    // var repeatX, repeatY;
+    // const imgW = 2400,
+    //   imgH = 1371;
+    // repeatX = (width * imgH) / (height * imgW);
+    // if (repeatX > 1) {
+    //   //fill the width and adjust the height accordingly
+    //   repeatX = 1;
+    //   repeatY = (height * imgW) / (width * imgH);
+    //   if (matGM.map) matGM.map.repeat.set(repeatX, repeatY);
+    //   if (matGM.map) matGM.map.offset.y = ((repeatY - 1) / 2) * -1;
+    // } else {
+    //   //fill the height and adjust the widtheightaccordingly
+    //   repeatX = (width * imgH) / (height * imgW);
+    //   repeatY = 1;
+    //   if (matGM.map) matGM.map.repeat.set(repeatX, repeatY);
+    //   if (matGM.map) matGM.map.offset.x = ((repeatX - 1) / 2) * -1;
+    // }
+
+    // const meshGM = new THREE.Mesh(planeGM, matGM);
+    // meshGM.material.depthTest = false;
+    // meshGM.material.depthWrite = false;
+    // scene.add(meshGM);
+    // scene.background = loader.load(bg);
+    // scene.background = new THREE.Color(0x10c17d);
+    // const count = planeGM.attributes.position.count;
+
+    // ..extra
+    // The X axis is red. The Y axis is green. The Z axis is blue.
+    //helpers
+    // const size = 10;
+    // const divisions = 10;
+    // const gridHelper = new THREE.GridHelper(size, divisions);
+    // scene.add(gridHelper);
+    // const axesHelper = new THREE.AxesHelper(5);
+    // scene.add(axesHelper);
+    //extra
+      // const reducedTime = elapsedTime * 0.7;
+      // for (let i = 0; i < count; i++) {
+      //   const x = planeGM.attributes.position.getX(i);
+      //   const y = planeGM.attributes.position.getY(i);
+      //   const anim1 = 0.25 * Math.sin(x + reducedTime);
+      //   const anim2 = 0.35 * Math.sin(y + reducedTime);
+      //   const anim3 = anim2 - anim1;
+
+      //   planeGM.attributes.position.setZ(i, anim3);
+      //   planeGM.attributes.position.needsUpdate = true;
+      // }
+      //extra
+      // material.uniforms.uMousex.value = mouse.x;
+      // material.uniforms.uMousey.value = mouse.y;
+          // const stats = Stats();
+    // document.body.appendChild(stats.dom);
+    // const gui = new GUI();
+    //test
+    const light = new THREE.AmbientLight(0x444040); // soft white light
+    scene.add(light);
+    const loader = new GLTFLoader();
+
+    loader.load(
+      "/Jet.glb",
+      function (gltf) {
+        console.log(sizes.aspectRatio);
+        gltf.scene.scale.set(0.0005, 0.0005, 0.0005);
+        scene.add(gltf.scene);
+      },
+      undefined,
+      function (error) {
+        console.error(error);
+      }
+    );
+    //test

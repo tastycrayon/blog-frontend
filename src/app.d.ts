@@ -13,7 +13,26 @@ declare global {
       code: string;
       id: string;
     }
+
   }
 }
+// for canvas
+declare global {
+  interface Document {
+    mozCancelFullScreen?: () => Promise<void>;
+    msExitFullscreen?: () => Promise<void>;
+    webkitExitFullscreen?: () => Promise<void>;
+    mozFullScreenElement?: Element;
+    msFullscreenElement?: Element;
+    webkitFullscreenElement?: Element;
+  }
 
-export {};
+  interface HTMLElement {
+    msRequestFullscreen?: () => Promise<void>;
+    mozRequestFullscreen?: () => Promise<void>;
+    webkitRequestFullscreen?: () => Promise<void>;
+  }
+}
+// for canvas end
+
+export { };

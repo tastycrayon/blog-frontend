@@ -4,10 +4,14 @@
 	import type { PageData } from './$types';
 	export let data: PageData;
 
-	$: ({ post, categories, allCategories } = data);
+	let post = data;
+	const links = [
+		{ name: 'HOME', url: '/' },
+		{ name: 'PROJECTS', url: '/projects' }
+	];
 </script>
 
-<Breadcrumb title={post.post_title} />
+<Breadcrumb title={post.post_title} items={links} />
 <div>
 	<hr />
 </div>
@@ -15,14 +19,19 @@
 	<div class="row">
 		<div class="col-12 col-lg-9">
 			<header><h1 class="mb-1">{post.post_title || ''}</h1></header>
-			<img
-				class="w-100"
-				src={post.post_image.image_url || ''}
-				alt={post.post_image.image_title || post.post_title}
-			/>
-			<big>{post.post_content || ''}</big>
+			{#if post?.post_image}
+				<img
+					class="w-100"
+					src={post?.post_image.image_url || ''}
+					alt={post?.post_image.image_title || post.post_title}
+				/>
+			{/if}
+			<div class="content my-2">
+				<p>{@html post.excerpt || ''}</p>
+				<p>{@html post.post_content || ''}</p>
+			</div>
 			<footer>
-				<nav>
+				<!-- <nav>
 					<ul>
 						{#each categories as cat}
 							<li>
@@ -32,12 +41,12 @@
 							</li>
 						{/each}
 					</ul>
-				</nav>
+				</nav> -->
 			</footer>
 		</div>
 		<aside class="col-12 col-lg-3">
 			<h3 class="mb-1">Categories</h3>
-			<ul>
+			<!-- <ul>
 				{#each allCategories as cat}
 					<li class="category-item py-1">
 						<a
@@ -47,7 +56,7 @@
 						</a>
 					</li>
 				{/each}
-			</ul>
+			</ul> -->
 		</aside>
 	</div>
 </div>

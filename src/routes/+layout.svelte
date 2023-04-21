@@ -1,14 +1,11 @@
 <script lang="ts">
-  import "../styles/app.scss";
-  import { setContextClient } from "@urql/svelte";
-  import { client } from "$lib/client";
-  import Cursor from "$components/cursor.svelte";
-  import {
-    setCursorToDefault,
-    setCursorToHamburger,
-    setCursorToSlider,
-  } from "$lib/store";
-  setContextClient(client);
+	import '../styles/app.scss';
+	import { setContextClient } from '@urql/svelte';
+	import { client } from '$lib/client';
+	import Cursor from '$components/cursor.svelte';
+	import { setCursorToDefault, setCursorToHamburger, setCursorToSlider } from '$lib/store';
+
+	setContextClient(client);
 </script>
 
 <Cursor />

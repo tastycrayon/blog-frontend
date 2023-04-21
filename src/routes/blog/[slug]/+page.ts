@@ -1,24 +1,22 @@
 import { error } from "@sveltejs/kit";
 import type { PageLoad } from "./$types";
-import { GetPostBySlugDocument } from "$lib/gql/generated";
-import type { GetPostBySlug, GetPostBySlugVariables } from "$lib/gql/generated";
+import { GetPostWithCatBySlugDocument } from "$lib/gql/generated";
+import type { GetPostWithCatBySlug, GetPostWithCatBySlugVariables } from "$lib/gql/generated";
 import { client } from "$lib/client";
 
 export const load = (async ({ params }) => {
   try {
     const { data, error } = await client
-      .query<GetPostBySlug, GetPostBySlugVariables>(GetPostBySlugDocument, {
+      .query<GetPostWithCatBySlug, GetPostWithCatBySlugVariables>(GetPostWithCatBySlugDocument, {
         slug: params.slug,
       })
       .toPromise();
     if (error) throw error;
     if (data)
-      return {
-        post: data.getPostBySlug,
-      };
+      return data.getPostWithCatBySlug
   } catch (err) {
-    throw error(404, "Not found");
+    throw error(404,);
   }
 }) satisfies PageLoad;
 
-export const ssr = true;
+// export const ssr = true;

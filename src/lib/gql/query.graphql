@@ -1,75 +1,146 @@
 fragment AuthorImage on User {
-  user_image {
-    ID
-    image_title
-    image_url
-    thumbnail_url
-    height
-    width
-    created_at
-    updated_at
-  }
+	user_image {
+		ID
+		image_title
+		image_url
+		thumbnail_url
+		height
+		width
+		created_at
+		updated_at
+	}
 }
 fragment PostImage on Post {
-  post_image {
-    ID
-    image_title
-    image_url
-    thumbnail_url
-    height
-    width
-  }
+	post_image {
+		ID
+		image_title
+		image_url
+		thumbnail_url
+		height
+		width
+	}
 }
 
 fragment AuthorPart on Post {
-  post_author {
-    ID
-    display_name
-    ...AuthorImage
-  }
+	post_author {
+		ID
+		display_name
+		...AuthorImage
+	}
 }
 
 query GetPosts($limit: Int!, $offset: Int!, $orderBy: String) {
-  getPosts(limit: $limit, offset: $offset, orderBy: $orderBy) {
-    ID
-    post_title
-    post_slug
-    post_content
-    ...AuthorPart
-    ...PostImage
-    updated_at
-    created_at
-  }
+	getPosts(limit: $limit, offset: $offset, orderBy: $orderBy) {
+		ID
+		post_title
+		post_slug
+		post_content
+		...AuthorPart
+		...PostImage
+		updated_at
+		created_at
+	}
+	getPostCount
+}
+
+query GetPostsByCategory($limit: Int!, $offset: Int!, $orderBy: String, $cat: String!) {
+	getPostsByCategory(limit: $limit, offset: $offset, orderBy: $orderBy, cat: $cat) {
+		ID
+		post_title
+		post_slug
+		post_content
+		...AuthorPart
+		...PostImage
+		updated_at
+		created_at
+	}
+	getPostCount
+}
+
+query GetPostsWithCategory($limit: Int!, $offset: Int!, $orderBy: String) {
+	getPostsWithCategory(limit: $limit, offset: $offset, orderBy: $orderBy) {
+		post {
+			ID
+			post_title
+			post_slug
+			post_content
+			...AuthorPart
+			...PostImage
+			updated_at
+			created_at
+		}
+		categories {
+			ID
+			category_title
+			category_slug
+			description
+		}
+	}
+	getPostCount
 }
 
 query GetPost($id: ID!) {
-  getPost(id: $id) {
-    ID
-    post_title
-    post_slug
-    post_content
-    ...AuthorPart
-    ...PostImage
-    updated_at
-    created_at
-  }
+	getPost(id: $id) {
+		ID
+		post_title
+		post_slug
+		post_content
+		...AuthorPart
+		...PostImage
+		updated_at
+		created_at
+	}
 }
 
 query GetPostBySlug($slug: String!) {
-  getPostBySlug(slug: $slug) {
-    ID
-    post_title
-    post_slug
-    post_content
-    ...AuthorPart
-    ...PostImage
-    updated_at
-    created_at
-  }
+	getPostBySlug(slug: $slug) {
+		ID
+		post_title
+		post_slug
+		post_content
+		...AuthorPart
+		...PostImage
+		updated_at
+		created_at
+	}
 }
+
+query GetPostWithCatBySlug($slug: String!) {
+	getPostWithCatBySlug(slug: $slug) {
+		post {
+			ID
+			post_title
+			post_slug
+			post_content
+			...AuthorPart
+			...PostImage
+			updated_at
+			created_at
+		}
+		categories {
+			ID
+			category_title
+			category_slug
+			description
+		}
+	}
+}
+
 query LoginUser($emailOrUsername: String!, $password: String!) {
-  login(emailOrUsername: $emailOrUsername, password: $password) {
-    access_token
-    exp
-  }
+	login(emailOrUsername: $emailOrUsername, password: $password) {
+		access_token
+		exp
+	}
+}
+
+# get categories
+query GetCategories {
+	getCategories {
+		ID
+		category_title
+		category_slug
+		description
+		created_at
+		updated_at
+	}
 }

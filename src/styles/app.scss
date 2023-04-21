@@ -16,7 +16,7 @@ $semantic-root-element: "div#pico-root"; // mention id
     "Segoe UI Symbol", "Noto Color Emoji";
   --line-height: 1.5;
   --font-weight: 400;
-  --font-size: 16px;
+  --font-size: 18px;
 
   // Borders
   // --border-radius: 0.25rem;
@@ -105,10 +105,19 @@ h5 {
 [type="checkbox"][role="switch"] {
   --border-width: 3px;
 }
+nav details[role="list"] summary + ul {
+  overflow: hidden;
+}
 
 // html {
 //   // cursor: none;
 // }
-nav details[role="list"] summary + ul {
-  overflow: hidden;
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+}
+body, body > * {
+transition: background-color 300ms ease;
 }

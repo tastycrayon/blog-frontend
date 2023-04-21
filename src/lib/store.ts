@@ -20,3 +20,10 @@ export const setCursorToSlider = () => CursorStore.set(CursorTypes.sliderDrag);
 export const MenuStore = writable<boolean>(false);
 
 export const setMenuToggler = () => MenuStore.update((t) => !t);
+
+// day night mode store
+export const DayNightStore = writable<boolean>(false);
+
+export const setDayNightToggler = () => DayNightStore.update((t) => !t);
+export const setDayToggler = () => DayNightStore.set(true);
+export const setNightToggler = () => DayNightStore.set(false);

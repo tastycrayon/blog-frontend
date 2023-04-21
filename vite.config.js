@@ -1,19 +1,19 @@
-import { sveltekit } from "@sveltejs/kit/vite";
-import path from "path";
-
+import { sveltekit } from '@sveltejs/kit/vite';
+import { defineConfig } from 'vite';
+import path from 'path';
+import glsl from 'vite-plugin-glsl';
 /** @type {import('vite').UserConfig} */
-const config = {
-  plugins: [sveltekit()],
-  optimizeDeps: {
-    exclude: ["@urql/svelte"],
-  },
 
-  resolve: {
-    alias: {
-      $components: path.resolve("./src/components"),
-      $lib: path.resolve("./src/lib"),
-    },
-  },
-};
+export default defineConfig({
+	plugins: [sveltekit(), glsl()],
+	optimizeDeps: {
+		exclude: ['@urql/svelte']
+	},
 
-export default config;
+	resolve: {
+		alias: {
+			$components: path.resolve('./src/components'),
+			$lib: path.resolve('./src/lib')
+		}
+	}
+});
