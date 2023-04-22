@@ -36,7 +36,7 @@
 	}
 	.wrapper {
 		// background-image: url('index-banner.jpg');
-		background-image: url('background.jpeg');
+		background-image: url('https://res.cloudinary.com/mosiur404/image/upload/v1682134612/blog/background_tx2tmp.jpg');
 		background-size: cover;
 		background-position: center;
 		background-repeat: no-repeat;
