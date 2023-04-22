@@ -1,4 +1,4 @@
-export const SERVER_URL =
-	import.meta.env.VITE_APP_GRAPHQL_URL == null
-		? import.meta.env.VITE_APP_GRAPHQL_URL
-		: 'http://localhost:8080';
+import { PUBLIC_BASE_URL } from '$env/static/public';
+import type { PageLoad } from './$types'
+
+export const SERVER_URL = PUBLIC_BASE_URL
