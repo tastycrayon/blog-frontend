@@ -1,4 +1,5 @@
 import { writable } from "svelte/store";
+import type { AuthState, IAccessToken } from "./client";
 
 // cursor store
 export enum CursorTypes {
@@ -27,3 +28,9 @@ export const DayNightStore = writable<boolean>(false);
 export const setDayNightToggler = () => DayNightStore.update((t) => !t);
 export const setDayToggler = () => DayNightStore.set(true);
 export const setNightToggler = () => DayNightStore.set(false);
+
+
+// login
+export const userState = writable<IAccessToken | null>(null)
+export const setUserState = (x: IAccessToken | null) => userState.set(x)
+export const upadateUserState = (x: IAccessToken) => userState.update((t) => ({ ...t, ...x }))

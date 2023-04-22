@@ -1,11 +1,20 @@
 <script lang="ts">
 	import '../styles/app.scss';
 	import { setContextClient } from '@urql/svelte';
-	import { client } from '$lib/client';
+	import { client, getAccessToken, type IAccessToken } from '$lib/client';
 	import Cursor from '$components/cursor.svelte';
-	import { setCursorToDefault, setCursorToHamburger, setCursorToSlider } from '$lib/store';
+	import {
+		setCursorToDefault,
+		setCursorToHamburger,
+		setCursorToSlider,
+		setUserState
+	} from '$lib/store';
+	import jwtDecode from 'jwt-decode';
 
 	setContextClient(client);
+	const token = getAccessToken();
+	const user = token ? jwtDecode<IAccessToken>(token) : null;
+	setUserState(user);
 </script>
 
 <Cursor />

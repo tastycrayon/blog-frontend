@@ -8,7 +8,7 @@ export const load: Load = (async ({ url }) => {
   const page = url.searchParams.get('page') || '1'
   const current = Math.max(parseInt(page), 1)
 
-  let limit: number = 4; //change later
+  let limit: number = 9; //change later
   let offset: number = (current - 1) * limit;
   try {
     const { data, error: resError } = await client

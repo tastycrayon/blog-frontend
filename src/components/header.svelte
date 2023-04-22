@@ -7,7 +7,8 @@
 		setCursorToHamburger,
 		setDayNightToggler,
 		setDayToggler,
-		setNightToggler
+		setNightToggler,
+		userState
 	} from '$lib/store';
 	import { onMount } from 'svelte';
 	import { page } from '$app/stores';
@@ -57,6 +58,9 @@
 				>
 			</li>
 		{/each}
+		{#if $userState}
+			<li>ACCOUNT</li>
+		{/if}
 		{#if $DayNightStore}
 			<li>
 				<a href="/" on:click|preventDefault={handleToggleNight}> <Icons name="sun" /></a>

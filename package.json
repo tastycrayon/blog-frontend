@@ -21,6 +21,7 @@
     "@sveltejs/kit": "^1.5.0",
     "@types/three": "^0.146.0",
     "@typescript-eslint/eslint-plugin": "^5.45.0",
+    "bootstrap": "^5.2.3",
     "prettier": "^2.8.1",
     "prettier-plugin-svelte": "^2.8.1",
     "sass": "^1.58.3",
@@ -28,16 +29,13 @@
     "svelte-check": "^3.0.1",
     "tslib": "^2.4.1",
     "typescript": "^5.0.0",
-    "bootstrap": "^5.2.3",
     "vite": "^4.2.0"
   },
   "dependencies": {
-    "@urql/exchange-auth": "^1.0.0",
-    "@urql/svelte": "^3.0.4",
+    "@urql/exchange-auth": "^2.1.1",
+    "@urql/svelte": "^4.0.0",
     "graphql": "^16.6.0",
-    "gsap": "^3.11.4",
     "jwt-decode": "^3.1.2",
-    "simplex-noise": "^4.0.1",
     "three": "^0.147.0",
     "vite-plugin-glsl": "^1.1.2"
   },
