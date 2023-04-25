@@ -33,7 +33,10 @@
 <svelte:head>
 	<meta property="og:title" content="HOME | MOSI" />
 	<meta property="og:description" content="A Bengali full-stack dev with a lot of dedication" />
-	<meta property="og:image" content="opengraph.png" />
+	<meta
+		property="og:image"
+		content="https://res.cloudinary.com/mosiur404/image/upload/v1682434985/blog/opengraph_jk0diq.png"
+	/>
 </svelte:head>
 
 <!-- OPENGRAPH -->
