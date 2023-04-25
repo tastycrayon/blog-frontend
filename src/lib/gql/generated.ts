@@ -784,7 +784,17 @@ export const GetPostsByCategoryDocument = {
 							]
 						}
 					},
-					{ kind: 'Field', name: { kind: 'Name', value: 'getPostCount' } }
+					{
+						kind: 'Field',
+						name: { kind: 'Name', value: 'getPostCount' },
+						arguments: [
+							{
+								kind: 'Argument',
+								name: { kind: 'Name', value: 'cat' },
+								value: { kind: 'Variable', name: { kind: 'Name', value: 'cat' } }
+							}
+						]
+					}
 				]
 			}
 		},

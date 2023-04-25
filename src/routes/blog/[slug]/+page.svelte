@@ -7,6 +7,11 @@
 	$: ({ post, categories, allCategories } = data);
 </script>
 
+<svelte:head>
+	<meta property="og:title" content={post.post_title} />
+	<!-- <meta property="og:description" content="A Bengali full-stack dev with a lot of dedication" /> -->
+	<meta property="og:image" content={post.post_image.image_url} />
+</svelte:head>
 <Breadcrumb title={post.post_title} />
 <div>
 	<hr />
@@ -20,7 +25,7 @@
 				src={post.post_image.image_url || ''}
 				alt={post.post_image.image_title || post.post_title}
 			/>
-			<big>{post.post_content || ''}</big>
+			<div class="my-3">{@html post.post_content || ''}</div>
 			<footer>
 				<nav>
 					<ul>

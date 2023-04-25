@@ -1,7 +1,7 @@
 <script lang="ts">
 	import '../styles/app.scss';
-	import { setContextClient } from '@urql/svelte';
-	import { client, getAccessToken, type IAccessToken } from '$lib/client';
+	import { initContextClient, setContextClient } from '@urql/svelte';
+	import { client, clientOpts, getAccessToken, type IAccessToken } from '$lib/client';
 	import Cursor from '$components/cursor.svelte';
 	import {
 		setCursorToDefault,
@@ -11,7 +11,8 @@
 	} from '$lib/store';
 	import jwtDecode from 'jwt-decode';
 
-	setContextClient(client);
+	initContextClient(clientOpts);
+	// setContextClient(client);
 	const token = getAccessToken();
 	const user = token ? jwtDecode<IAccessToken>(token) : null;
 	setUserState(user);

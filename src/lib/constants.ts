@@ -6,23 +6,58 @@ export const internalLinks = [
     {
         component: "HOME",
         url: "/",
-        img: "https://cdn-icons-png.flaticon.com/512/2065/2065213.png",
+        img: "",
     },
     {
         component: "ABOUT",
         url: "/about",
-        img: "https://cdn-icons-png.flaticon.com/512/2065/2065213.png",
+        img: "",
     },
     {
         component: "PROJECTS",
         url: "/projects",
-        img: "https://cdn-icons-png.flaticon.com/512/2065/2065213.png",
+        img: "",
     },
     {
         component: "BLOG",
         url: "/blog",
-        img: "https://cdn-icons-png.flaticon.com/512/2065/2065213.png",
+        img: "",
     },
 ];
 
+export const MenuButton = {
+    component: "RESUME",
+    url: "resume.pdf",
+    img: "",
+}
+
 export const PAGINATION_KEY = "page"
+export const BLOG_POST_COUNT = 9
+
+type Icon = {
+    name: any;
+    url: string;
+    component: string;
+};
+export const ICONS_LINKS: Icon[] = [
+    {
+        name: "upwork",
+        url: "https://www.upwork.com/freelancers/~01816d245683177af1",
+        component: "upwork.com/freelancers/~01816d245683177af1"
+    },
+    {
+        name: "envelope",
+        url: "mailto:mosiurdev@gmail.com",
+        component: "mosiurdev@gmail.com"
+    },
+    {
+        name: "github",
+        url: "https://github.com/tastycrayon",
+        component: "github.com/tastycrayon"
+    },
+    {
+        name: "linkedin",
+        url: "https://linkedin.com/mosiur404",
+        component: "linkedin.com/mosiur404"
+    },
+];

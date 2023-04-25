@@ -1,9 +1,22 @@
 <script lang="ts">
 	import { page } from '$app/stores';
 	import { internalLinks } from '$lib/constants';
-	import { MenuStore, setCursorToDefault, setCursorToHamburger } from '$lib/store';
+	import {
+		DayNightStore,
+		MenuStore,
+		handleToggleDay,
+		handleToggleNight,
+		setCursorToDefault,
+		setCursorToHamburger,
+		setMenuHide
+	} from '$lib/store';
+	import { onDestroy } from 'svelte';
 	import Cat from './cat.svelte';
 	import MenuIcons from './menu-icons.svelte';
+	import Icons from '$components/icons.svelte';
+	onDestroy(() => {
+		setMenuHide();
+	});
 </script>
 
 <nav class="menu-holder">
@@ -11,7 +24,7 @@
 		<div class="menu-nav-container container">
 			<div class="row">
 				<div class="col-6">
-					<ul class="menu-nav-links">
+					<ul class="menu-nav-links py-2">
 						{#each internalLinks as item}
 							<li
 								id={item.component}
@@ -23,6 +36,19 @@
 								>
 							</li>
 						{/each}
+						{#if $DayNightStore}
+							<li>
+								<a href="/" on:click|preventDefault={handleToggleNight}
+									><Icons name="sun" width="32px" height="32px" />----</a
+								>
+							</li>
+						{:else}
+							<li>
+								<a href="/" on:click|preventDefault={handleToggleDay}
+									><Icons name="moon" width="32px" height="32px" />----</a
+								>
+							</li>
+						{/if}
 						<!-- icons  -->
 						<MenuIcons />
 						<!-- icons  -->
@@ -50,25 +76,16 @@
 
 			will-change: transform;
 			transition: transform 1s cubic-bezier(1, 0, 0, 1);
-			color: #000;
 			transform: translateX(-100%);
 
 			& .menu-nav-container {
-				// position: relative;
-				// left: 220px;
 				margin-top: 100px;
-				// overflow: hidden;
-				// width: calc(100vw - 220px); // edit later
 
-				// // for cat
-				// display: flex;
-				// // for phone
-				// @include mq("tablet", max) {
-				//   left: 100px;
-				//   top: 200px;
-				// }
 				& .menu-nav-links {
-					// min-width: 350px;
+					background-color: #111;
+					[data-theme='light'] & {
+						background-color: var(--background-color);
+					}
 					height: calc(100vh - 100px);
 					@include mq('tablet', max) {
 						height: calc(100vh - 200px);

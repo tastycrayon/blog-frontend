@@ -19,7 +19,7 @@ export const setCursorToSlider = () => CursorStore.set(CursorTypes.sliderDrag);
 
 // menu store
 export const MenuStore = writable<boolean>(false);
-
+export const setMenuHide = () => MenuStore.set(false);
 export const setMenuToggler = () => MenuStore.update((t) => !t);
 
 // day night mode store
@@ -28,7 +28,16 @@ export const DayNightStore = writable<boolean>(false);
 export const setDayNightToggler = () => DayNightStore.update((t) => !t);
 export const setDayToggler = () => DayNightStore.set(true);
 export const setNightToggler = () => DayNightStore.set(false);
-
+export const handleToggleDay = () => {
+  if (!window) return;
+  setDayNightToggler();
+  document.documentElement.dataset.theme = 'light';
+};
+export const handleToggleNight = () => {
+  if (!window) return;
+  setDayNightToggler();
+  document.documentElement.dataset.theme = 'dark';
+};
 
 // login
 export const userState = writable<IAccessToken | null>(null)

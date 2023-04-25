@@ -1,14 +1,15 @@
 import { GetPostsByCategoryDocument } from "$lib/gql/generated";
 import type { GetPostsByCategory, GetPostsByCategoryVariables } from "$lib/gql/generated";
 import { client } from "$lib/client";
-import { error, type Load, } from "@sveltejs/kit";
+import { error } from "@sveltejs/kit";
 import type { PageLoad } from "./$types";
+import { BLOG_POST_COUNT } from "$lib/constants";
 
-export const load: Load = (async ({ url, params }) => {
+export const load = (async ({ url, params }) => {
     const page = url.searchParams.get('page') || '1'
     const current = Math.max(parseInt(page), 1)
 
-    let limit: number = 2; //change later
+    let limit: number = BLOG_POST_COUNT; //change later
     let offset: number = (current - 1) * limit;
     try {
         const { data, error: resError } = await client

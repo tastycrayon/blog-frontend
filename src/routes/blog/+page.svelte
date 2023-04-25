@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { timeSince } from '$lib/util';
-	import { BLOG_ROOT_URL, CATEGORY_ROOT_URL, PAGINATION_KEY } from '$lib/constants';
+	import { BLOG_ROOT_URL, CATEGORY_ROOT_URL } from '$lib/constants';
 
 	import type { PageData } from './$types';
 	import Pagination from '$components/pagination.svelte';
@@ -10,6 +10,14 @@
 		pagination: { current, limit }
 	} = data);
 </script>
+
+<!-- OPENGRAPH -->
+<svelte:head>
+	<meta property="og:title" content="BLOG | MOSI" />
+	<!-- <meta property="og:description" content="A Bengali full-stack dev with a lot of dedication" /> -->
+	<meta property="og:image" content="opengraph.png" />
+</svelte:head>
+<!-- OPENGRAPH -->
 
 <div class="container">
 	<header>
@@ -34,14 +42,14 @@
 </div>
 
 <div class="container">
-	<!-- <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 py-1"> -->
 	<div class="row g-4">
 		{#each posts as item}
 			<div class="col-12 col-md-6 col-lg-4">
 				{#if item.post.post_image}
 					<a href={BLOG_ROOT_URL + '/' + item.post.post_slug}>
 						<img
-							src={item.post.post_image.image_url || ''}
+							class="w-100"
+							src={item.post.post_image.thumbnail_url || ''}
 							alt={item.post.post_image.image_title || item.post.post_title}
 						/>
 					</a>
@@ -51,7 +59,11 @@
 					<nav class="col-auto">
 						{#if item.categories}
 							{#each item.categories as { category_title, category_slug, description }}
-								<a class="contrast col p-0 m-0" href={'blog/' + category_slug} title={description}>
+								<a
+									class="contrast col p-0 m-0"
+									href={['', BLOG_ROOT_URL, CATEGORY_ROOT_URL, category_slug].join('/')}
+									title={description}
+								>
 									<u class="p-1"><small>{category_title}</small></u>
 								</a>
 							{/each}

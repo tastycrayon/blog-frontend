@@ -6,12 +6,12 @@ import { client } from "$lib/client";
 
 export const load = (async ({ params }) => {
   try {
-    const { data, error } = await client
+    const { data, error: resError } = await client
       .query<GetPostWithCatBySlug, GetPostWithCatBySlugVariables>(GetPostWithCatBySlugDocument, {
         slug: params.slug,
       })
       .toPromise();
-    if (error) throw error;
+    if (resError) throw resError;
     if (data)
       return data.getPostWithCatBySlug
   } catch (err) {

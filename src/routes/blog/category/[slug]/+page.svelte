@@ -10,6 +10,13 @@
 	} = data);
 </script>
 
+<!-- OPENGRAPH -->
+<svelte:head>
+	<meta property="og:title" content="CATEGORY BLOG | MOSI" />
+	<!-- <meta property="og:description" content="A Bengali full-stack dev with a lot of dedication" /> -->
+	<meta property="og:image" content="opengraph.png" />
+</svelte:head>
+<!-- OPENGRAPH -->
 <div class="container">
 	<header>
 		<h1 class="mb-0">Mosi's Blog</h1>
@@ -37,7 +44,7 @@
 		{#each posts as post}
 			<div class="col">
 				{#if post.post_image}
-					<a href={BLOG_ROOT_URL + '/' + post.post_slug}>
+					<a href={'/' + BLOG_ROOT_URL + '/' + post.post_slug}>
 						<img
 							src={post.post_image.image_url || ''}
 							alt={post.post_image.image_title || post.post_title}
@@ -48,7 +55,7 @@
 					<small class="col">{timeSince(post.created_at)} ago</small>
 					<nav class="col-auto">&nbsp;</nav>
 				</div>
-				<a href={BLOG_ROOT_URL + '/' + post.post_slug}>
+				<a href={'/' + BLOG_ROOT_URL + '/' + post.post_slug}>
 					<h2>{post.post_title}</h2>
 				</a>
 			</div>

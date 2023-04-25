@@ -72,14 +72,14 @@
 		windowListeners.push({ x: 'resize', y: handleResize });
 		window.addEventListener('resize', handleResize);
 		// Objects
-		const geometry = new THREE.IcosahedronGeometry(IS_PHONE ? 0.8 : 0.7, 120);
+		const geometry = new THREE.IcosahedronGeometry(IS_PHONE ? 0.92 : 0.8, 128);
 
 		// Materials
 		const material = new THREE.ShaderMaterial({
 			vertexShader,
 			fragmentShader
 		});
-		material.uniforms.uTime = { value: 5 };
+		material.uniforms.uTime = { value: 5.0 };
 
 		const ico = new THREE.Mesh(geometry, material);
 		ico.receiveShadow = false; //perform
@@ -109,13 +109,12 @@
 			const elapsedTime = clock.getElapsedTime();
 
 			// Update objects
-			material.uniforms.uTime.value = elapsedTime * 0.1;
+			material.uniforms.uTime.value = elapsedTime;
 			// Update Orbital Controls
 			controls.update();
 
 			// Render
 			renderer.render(scene, camera);
-
 			// timeout = setTimeout(tick, framerate); //25
 			animationFrame = window.requestAnimationFrame(tick);
 		};
@@ -134,11 +133,25 @@
 
 <!-- <svelte:window bind:innerWidth={width} bind:innerHeight={height} /> -->
 <!-- on:dblclick={handleDblClick} -->
-<div class="w-100 h-100" bind:clientWidth={width} bind:clientHeight={height}>
-	<canvas bind:this={canvas} />
+<div class="canvas-wrapper">
+	<div class="square" bind:clientWidth={width} bind:clientHeight={height}>
+		<canvas bind:this={canvas} />
+	</div>
 </div>
 
 <style lang="scss">
-	// canvas {
-	// }
+	.canvas-wrapper {
+		height: 100%;
+		width: 100%;
+		position: relative;
+	}
+	.square {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		aspect-ratio: 1 / 1;
+		max-height: 100%;
+		width: 100%;
+	}
 </style>

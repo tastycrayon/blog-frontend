@@ -6,13 +6,18 @@
 <div class="container">
 	<header>
 		<h1 class="mb-0">Mosi's Projects</h1>
-		<nav>
-			<ul>
-				<li>
-					<a class="contrast" href="/projects"><u><big>Some Side Projects</big></u> </a>
-				</li>
-			</ul>
-		</nav>
+		<ul>
+			<li>
+				<a class="contrast" href="https://github.com/tastycrayon"
+					><u><small>github.com/tastycrayon</small></u>
+				</a>
+			</li>
+			<li>
+				<a class="contrast" href="https://www.upwork.com/freelancers/~01816d245683177af1"
+					><u><small>upwork.com/freelancers/~01816d245683177af1</small></u>
+				</a>
+			</li>
+		</ul>
 	</header>
 </div>
 <div>

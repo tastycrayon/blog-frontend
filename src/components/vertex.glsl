@@ -109,7 +109,7 @@ float wave(vec3 position){
 void main() {
     // update
     vec3 coords = normal;
-    coords.y += uTime;
+    coords.y += uTime * 0.5;// * 3.14159; // speed 3.14159
     vec3 noisePattern = vec3(cnoise(coords)); 
     float displacementPattern = wave(noisePattern);
 

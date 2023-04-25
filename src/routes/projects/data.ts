@@ -72,6 +72,10 @@ export const SIDE_PROJECTS = [
         excerpt: `
                 <ul>
                     <li>Website: <a href="https://todoreactapp-3qmo.onrender.com">todoreactapp-3qmo.onrender.com</a></li>
+                    <li>
+                        Github: <a href="https://github.com/tastycrayon/todo-app-client">&lt;Frontend/&gt;</a>,
+                        <a href="https://github.com/tastycrayon/todo-app-server">&lt;Backend/&gt;</a>
+                    </li>
                     <li>Tech: MERN Stack</li>
                 </ul>`,
         post_content: `

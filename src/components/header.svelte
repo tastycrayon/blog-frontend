@@ -1,8 +1,10 @@
 <script lang="ts">
 	import Icons from '$components/icons.svelte';
-	import { internalLinks } from '$lib/constants';
+	import { MenuButton, internalLinks } from '$lib/constants';
 	import {
 		DayNightStore,
+		handleToggleDay,
+		handleToggleNight,
 		setCursorToDefault,
 		setCursorToHamburger,
 		setDayNightToggler,
@@ -13,17 +15,6 @@
 	import { onMount } from 'svelte';
 	import { page } from '$app/stores';
 
-	const handleToggleDay = () => {
-		if (!window) return;
-		setDayNightToggler();
-		document.documentElement.dataset.theme = 'light';
-	};
-	const handleToggleNight = () => {
-		if (!window) return;
-		setDayNightToggler();
-		document.documentElement.dataset.theme = 'dark';
-	};
-
 	onMount(() => {
 		const userPrefersColorMode = window.matchMedia('(prefers-color-scheme: light)').matches;
 		if (userPrefersColorMode) setDayToggler();
@@ -33,18 +24,35 @@
 
 <nav class="container">
 	<ul>
-		<li><a href="/" class="contrast"><strong>Mosi</strong></a></li>
+		<li>
+			<a href="/" class="contrast"
+				><img src="logo.svg" alt="logo" width="32px" height="auto" /> <strong>Mosi</strong></a
+			>
+		</li>
 	</ul>
 	<!-- phone -->
-	<details role="list" class="d-inline d-lg-none my-auto">
-		<summary aria-haspopup="listbox" role="button" class="contrast outline"> Menu </summary>
-		<ul role="listbox">
-			{#each internalLinks as links}
-				<li><a href={links.url}>{links.component}</a></li>
-			{/each}
-			<li><a href="contact" role="button">Button</a></li>
+	<div class="d-inline-flex d-lg-none">
+		<ul class="me-2">
+			{#if $DayNightStore}
+				<li>
+					<a href="/" on:click|preventDefault={handleToggleNight}> <Icons name="sun" /></a>
+				</li>
+			{:else}
+				<li>
+					<a href="/" on:click|preventDefault={handleToggleDay}><Icons name="moon" /></a>
+				</li>
+			{/if}
 		</ul>
-	</details>
+		<details role="list" class="d-inline my-auto">
+			<summary aria-haspopup="listbox" role="button" class="contrast outline"> Menu </summary>
+			<ul role="listbox">
+				{#each internalLinks as links}
+					<li><a href={links.url}>{links.component}</a></li>
+				{/each}
+				<li><a href="contact" role="button">Button</a></li>
+			</ul>
+		</details>
+	</div>
 	<!-- phone end -->
 	<ul
 		class="d-none d-lg-inline"
@@ -70,7 +78,7 @@
 				<a href="/" on:click|preventDefault={handleToggleDay}><Icons name="moon" /></a>
 			</li>
 		{/if}
-		<li><a href="contact" role="button">Button</a></li>
+		<li><a href={MenuButton.url} role="button">{MenuButton.component}</a></li>
 	</ul>
 </nav>
 <div>

@@ -18,7 +18,7 @@
 						<h1 class="mb-1">
 							Hi, I'm<br />Mosiur Rahman
 						</h1>
-						<big>A passionate fullstack developer <br />living in Bangladesh</big>
+						<big>A Bengali full-stack dev<br />with a lot of dedication</big>
 						<div>
 							<a role="button" href="projects" class="my-2 w-auto"><span>See My Work</span> +</a>
 						</div>
@@ -28,6 +28,15 @@
 		</div>
 	</div>
 </div>
+
+<!-- OPENGRAPH -->
+<svelte:head>
+	<meta property="og:title" content="HOME | MOSI" />
+	<meta property="og:description" content="A Bengali full-stack dev with a lot of dedication" />
+	<meta property="og:image" content="opengraph.png" />
+</svelte:head>
+
+<!-- OPENGRAPH -->
 
 <style lang="scss">
 	h1,
@@ -58,26 +67,4 @@
 			height: 100%;
 		}
 	}
-
-	// .main-container {
-	//   position: relative;
-	//   height: 100vh;
-	//   width: calc(100vw - 50px);
-	//   display: flex;
-	//   align-items: flex-end;
-	//   margin: 0 auto;
-	//   h1 {
-	//     font-size: clamp(64px, 8vw, 15vw);
-	//     max-width: 70vw;
-	//     margin-bottom: 10vh;
-	//     margin-left: 1rem;
-	//     color: #111;
-	//   }
-	//   @include mq("tablet", min) {
-	//     margin-left: 75px;
-	//     padding-left: 50px;
-	//     border-left: 1px solid #111;
-	//     width: calc(100vw - 126px);
-	//   }
-	// }
 </style>

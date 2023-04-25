@@ -1,6 +1,7 @@
 <script lang="ts">
 	import Breadcrumb from '$components/breadcrumb.svelte';
-	import { BLOG_ROOT_URL, CATEGORY_ROOT_URL } from '$lib/constants';
+	import { BLOG_ROOT_URL, CATEGORY_ROOT_URL, PROJECTS_ROOT_URL } from '$lib/constants';
+	import { PROJECTS, SIDE_PROJECTS } from '../data';
 	import type { PageData } from './$types';
 	export let data: PageData;
 
@@ -45,7 +46,23 @@
 			</footer>
 		</div>
 		<aside class="col-12 col-lg-3">
-			<h3 class="mb-1">Categories</h3>
+			<h3 class="mb-1">Projects</h3>
+			<ul>
+				{#each PROJECTS as p}
+					<li class="category-item py-1">
+						<a class="contrast" href={['', PROJECTS_ROOT_URL, p.post_slug].join('/')}
+							><big>{p.post_title}</big>
+						</a>
+					</li>
+				{/each}
+				{#each SIDE_PROJECTS as p}
+					<li class="category-item py-1">
+						<a class="contrast" href={['', PROJECTS_ROOT_URL, p.post_slug].join('/')}
+							><big>{p.post_title}</big>
+						</a>
+					</li>
+				{/each}
+			</ul>
 			<!-- <ul>
 				{#each allCategories as cat}
 					<li class="category-item py-1">

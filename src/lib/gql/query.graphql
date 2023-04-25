@@ -54,7 +54,7 @@ query GetPostsByCategory($limit: Int!, $offset: Int!, $orderBy: String, $cat: St
 		updated_at
 		created_at
 	}
-	getPostCount
+	getPostCount(cat: $cat)
 }
 
 query GetPostsWithCategory($limit: Int!, $offset: Int!, $orderBy: String) {
