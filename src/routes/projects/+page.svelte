@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { PROJECTS_ROOT_URL } from '$lib/constants';
 	import { setCursorToDefault, setCursorToHamburger } from '$lib/store';
-	import { PROJECTS, SIDE_PROJECTS } from './data';
+	import { PROJECTS, SIDE_PROJECTS } from '$lib/data';
 </script>
 
 <div class="container">

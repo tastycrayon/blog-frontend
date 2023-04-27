@@ -12,8 +12,8 @@ export const load = (async ({ params }) => {
       })
       .toPromise();
     if (resError) throw resError;
-    if (data)
-      return { ...data.getPostWithCatBySlug }
+    if (!data) throw error(404, ("No Posts Found." as any));
+    return data
   } catch (err) {
     throw error(404,);
   }

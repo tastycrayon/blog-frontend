@@ -1,11 +1,10 @@
 <script lang="ts">
 	import Breadcrumb from '$components/breadcrumb.svelte';
 	import { BLOG_ROOT_URL, CATEGORY_ROOT_URL, PROJECTS_ROOT_URL } from '$lib/constants';
-	import { PROJECTS, SIDE_PROJECTS } from '../data';
 	import type { PageData } from './$types';
 	export let data: PageData;
 
-	let post = data;
+	$: ({ post, PROJECTS, SIDE_PROJECTS } = data);
 	const links = [
 		{ name: 'HOME', url: '/' },
 		{ name: 'PROJECTS', url: '/projects' }
