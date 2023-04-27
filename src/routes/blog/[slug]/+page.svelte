@@ -10,7 +10,9 @@
 <svelte:head>
 	<meta property="og:title" content={post.post_title} />
 	<!-- <meta property="og:description" content="A Bengali full-stack dev with a lot of dedication" /> -->
-	<meta property="og:image" content={post.post_image.image_url} />
+	{#if post?.post_image}
+		<meta property="og:image" content={post.post_image.image_url} />
+	{/if}
 </svelte:head>
 <Breadcrumb title={post.post_title} />
 <div>
@@ -20,24 +22,28 @@
 	<div class="row">
 		<div class="col-12 col-lg-9">
 			<header><h1 class="mb-1">{post.post_title || ''}</h1></header>
-			<img
-				class="w-100"
-				src={post.post_image.image_url || ''}
-				alt={post.post_image.image_title || post.post_title}
-			/>
+			{#if post?.post_image}
+				<img
+					class="w-100"
+					src={post.post_image.image_url || ''}
+					alt={post.post_image.image_title || post.post_title}
+				/>
+			{/if}
 			<div class="my-3">{@html post.post_content || ''}</div>
 			<footer>
-				<nav>
-					<ul>
-						{#each categories as cat}
-							<li>
-								<a class="contrast" href={BLOG_ROOT_URL + cat.category_slug}
-									><u>{cat.category_title}</u>
-								</a>
-							</li>
-						{/each}
-					</ul>
-				</nav>
+				{#if categories}
+					<nav>
+						<ul>
+							{#each categories as cat}
+								<li>
+									<a class="contrast" href={BLOG_ROOT_URL + cat.category_slug}
+										><u>{cat.category_title}</u>
+									</a>
+								</li>
+							{/each}
+						</ul>
+					</nav>
+				{/if}
 			</footer>
 		</div>
 		<aside class="col-12 col-lg-3">

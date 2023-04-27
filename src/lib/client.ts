@@ -5,6 +5,7 @@ import {
   cacheExchange,
   fetchExchange,
   makeOperation,
+  Client,
 } from "@urql/svelte";
 import { authExchange } from "@urql/exchange-auth";
 import { setUserState } from "./store";
@@ -168,7 +169,8 @@ export const clientOpts: ClientOptions = {
     const token = getAccessToken();
     return {
       credentials: "include",
-      headers: { Authorization: token ? `Bearer ${token}` : "" },
+      headers: { Authorization: token ? `Bearer ${token}` : "", },
+
     };
   },
 
@@ -231,12 +233,11 @@ export const clientOpts: ClientOptions = {
 };
 
 
+let c: Client | undefined = undefined
 export const createClientWithFetch = (f: any) => {
-  let c = createClient({
-    url: SERVER_URL + "/query",
-    fetch: f,
-    exchanges: [fetchExchange]
-  })
+  if (c) return c
+  clientOpts.fetch = f;
+  c = createClient(clientOpts)
   return c
 }
 
