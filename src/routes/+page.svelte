@@ -2,6 +2,7 @@
 	import CanvasAlt from '$components/canvas-alt.svelte';
 	import MenuBtn from '$components/menu/menu-btn.svelte';
 	import MenuContent from '$components/menu/menu-content.svelte';
+	import { setCursorToDefault, setCursorToHamburger } from '$lib/store';
 </script>
 
 <MenuBtn />
@@ -20,7 +21,13 @@
 						</h1>
 						<big>A Bengali full-stack dev<br />with a lot of dedication</big>
 						<div>
-							<a role="button" href="projects" class="my-2 w-auto"><span>See My Work</span> +</a>
+							<a
+								role="button"
+								href="projects"
+								class="my-2 w-auto"
+								on:mouseenter={setCursorToHamburger}
+								on:mouseleave={setCursorToDefault}><span>See My Work</span> +</a
+							>
 						</div>
 					</div>
 				</div>

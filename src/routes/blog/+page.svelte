@@ -4,6 +4,7 @@
 
 	import type { PageData } from './$types';
 	import Pagination from '$components/pagination.svelte';
+	import { setCursorToDefault, setCursorToHamburger } from '$lib/store';
 	export let data: PageData;
 	$: ({ posts, allCategories, count } = data);
 	$: ({
@@ -49,7 +50,11 @@
 		{#each posts as item}
 			<div class="col-12 col-md-6 col-lg-4">
 				{#if item.post.post_image}
-					<a href={BLOG_ROOT_URL + '/' + item.post.post_slug}>
+					<a
+						href={BLOG_ROOT_URL + '/' + item.post.post_slug}
+						on:mouseenter={setCursorToHamburger}
+						on:mouseleave={setCursorToDefault}
+					>
 						<img
 							class="w-100"
 							src={item.post.post_image.thumbnail_url || ''}
@@ -73,7 +78,11 @@
 						{/if}
 					</nav>
 				</div>
-				<a href={BLOG_ROOT_URL + '/' + item.post.post_slug}>
+				<a
+					href={BLOG_ROOT_URL + '/' + item.post.post_slug}
+					on:mouseenter={setCursorToHamburger}
+					on:mouseleave={setCursorToDefault}
+				>
 					<h2 class="mb-2">{item.post.post_title}</h2>
 				</a>
 			</div>

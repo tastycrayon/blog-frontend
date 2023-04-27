@@ -130,31 +130,32 @@
 		}
 	}
 	.sliderDrag {
-		.secondary-cursor-background {
+		& .secondary-cursor-background {
 			opacity: 0.5;
-			animation: scaleUp 1s cubic-bezier(0.77, 0, 0.175, 1) 0s forwards,
-				bgUp 1s cubic-bezier(0.77, 0, 0.175, 1) 0s forwards;
+			animation: scaleUp 0.3s cubic-bezier(0.77, 0, 0.175, 1) 0s forwards,
+				bgUp 0.3s cubic-bezier(0.77, 0, 0.175, 1) 0s forwards;
 
 			&:after {
-				animation: fadeIn 1s cubic-bezier(0.77, 0, 0.175, 1) 0s forwards,
-					translateRightDot 1s cubic-bezier(0.77, 0, 0.175, 1) 0s forwards;
+				animation: fadeIn 0.3s cubic-bezier(0.77, 0, 0.175, 1) 0s forwards,
+					translateRightDot 0.3s cubic-bezier(0.77, 0, 0.175, 1) 0s forwards;
 			}
 
 			&:before {
-				animation: fadeIn 1s cubic-bezier(0.77, 0, 0.175, 1) 0s forwards,
-					translateLeftDot 1s cubic-bezier(0.77, 0, 0.175, 1) 0s forwards;
+				animation: fadeIn 0.3s cubic-bezier(0.77, 0, 0.175, 1) 0s forwards,
+					translateLeftDot 0.3s cubic-bezier(0.77, 0, 0.175, 1) 0s forwards;
 			}
 		}
-
-		.main-cursor {
+		& .main-cursor-background {
 			animation: fadeOut 1s cubic-bezier(0.77, 0, 0.175, 1) 0s forwards;
 		}
 	}
-	.hamburger .main-cursor-background {
-		animation: scaleUp 0.7s cubic-bezier(0.77, 0, 0.175, 1) 0s forwards;
-	}
-	.hamburger .secondary-cursor-background {
-		animation: fadeOut 1s cubic-bezier(0.77, 0, 0.175, 1) 0s forwards;
+	.hamburger {
+		& .main-cursor-background {
+			animation: scaleUp 0.7s cubic-bezier(0.77, 0, 0.175, 1) 0s forwards;
+		}
+		& .secondary-cursor-background {
+			animation: fadeOut 1s cubic-bezier(0.77, 0, 0.175, 1) 0s forwards;
+		}
 	}
 
 	@keyframes fadeIn {

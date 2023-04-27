@@ -12,4 +12,4 @@ export const load = (async ({ params }) => {
   }
 }) satisfies PageLoad;
 
-// export const ssr = true;
+export const ssr = true;

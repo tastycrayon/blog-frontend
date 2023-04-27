@@ -4,9 +4,10 @@
 	import { onDestroy, onMount } from 'svelte';
 	import vertexShader from './vertex.glsl';
 	import fragmentShader from './fragment.glsl';
+	import { setCursorToDefault, setCursorToSlider } from '$lib/store';
 	let width = 1;
 	let height = 1;
-	let mouse = { x: 1, y: 1 };
+	// let mouse = { x: 1, y: 1 };
 	// Canvas
 	let canvas: HTMLCanvasElement | undefined;
 	let renderer: THREE.WebGLRenderer;
@@ -79,7 +80,7 @@
 			vertexShader,
 			fragmentShader
 		});
-		material.uniforms.uTime = { value: 5.0 };
+		material.uniforms.uTime = { value: 0.0 };
 
 		const ico = new THREE.Mesh(geometry, material);
 		ico.receiveShadow = false; //perform
@@ -131,11 +132,9 @@
 	});
 </script>
 
-<!-- <svelte:window bind:innerWidth={width} bind:innerHeight={height} /> -->
-<!-- on:dblclick={handleDblClick} -->
 <div class="canvas-wrapper">
 	<div class="square" bind:clientWidth={width} bind:clientHeight={height}>
-		<canvas bind:this={canvas} />
+		<canvas bind:this={canvas} on:mousedown={setCursorToSlider} on:mouseup={setCursorToDefault} />
 	</div>
 </div>
 

@@ -50,14 +50,14 @@
 			<ul>
 				{#each PROJECTS as p}
 					<li class="category-item py-1">
-						<a class="contrast" href={['', PROJECTS_ROOT_URL, p.post_slug].join('/')}
+						<a class="contrast" href={'/' + PROJECTS_ROOT_URL + '/' + p.post_slug}
 							><big>{p.post_title}</big>
 						</a>
 					</li>
 				{/each}
 				{#each SIDE_PROJECTS as p}
 					<li class="category-item py-1">
-						<a class="contrast" href={['', PROJECTS_ROOT_URL, p.post_slug].join('/')}
+						<a class="contrast" href={'/' + PROJECTS_ROOT_URL + '/' + p.post_slug}
 							><big>{p.post_title}</big>
 						</a>
 					</li>

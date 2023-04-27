@@ -15,19 +15,19 @@ export const PROJECTS = [
         post_content: `
         <div class="row">
             <div class="col-4">
-                <h3>Desktop</h3>
+                <b>Desktop</b>
                 <a href="https://res.cloudinary.com/mosiur404/image/upload/v1681839138/blog/projects/translatinotaku-1_lyamuu.png">
                     <img src="https://res.cloudinary.com/mosiur404/image/upload/w_400/v1681839138/blog/projects/translatinotaku-1_lyamuu.png"/>
                 </a>
             </div>
             <div class="col-4">
-                <h3>Phone</h3>
+                <b>Phone</b>
                 <a href="https://res.cloudinary.com/mosiur404/image/upload/v1681839136/blog/projects/translatinotaku-2_tv9h2w.png">
                     <img src="https://res.cloudinary.com/mosiur404/image/upload/w_400/v1681839136/blog/projects/translatinotaku-2_tv9h2w.png"/>
                 </a>
             </div>
             <div class="col-4">
-                <h3>Phone</h3>
+                <b>Phone</b>
                 <a href="https://res.cloudinary.com/mosiur404/image/upload/v1681839135/blog/projects/translatinotaku-3_pryfmp.png">
                     <img src="https://res.cloudinary.com/mosiur404/image/upload/w_400/v1681839135/blog/projects/translatinotaku-3_pryfmp.png"/>
                 </a>
@@ -50,10 +50,11 @@ export const PROJECTS = [
         post_content: `
         <div class="row">
         <div class="col-4">
-        <h3>Desktop</h3>
-                <a href="https://res.cloudinary.com/mosiur404/image/upload/v1681839137/blog/projects/strat-o-s_jjkf59.png">
-                    <img src="https://res.cloudinary.com/mosiur404/image/upload/w_400/v1681839137/blog/projects/strat-o-s_jjkf59.png"/>
-                </a>
+            <b>Desktop</b>
+            <br>
+            <a href="https://res.cloudinary.com/mosiur404/image/upload/v1681839137/blog/projects/strat-o-s_jjkf59.png">
+                <img src="https://res.cloudinary.com/mosiur404/image/upload/w_400/v1681839137/blog/projects/strat-o-s_jjkf59.png"/>
+            </a>
             </div>
         </div>
         `,
@@ -81,19 +82,19 @@ export const SIDE_PROJECTS = [
         post_content: `
                 <div class="row">
                     <div class="col-4">
-                        <h3>Desktop</h3>
+                        <b>Desktop</b>
                         <a href="https://res.cloudinary.com/mosiur404/image/upload/v1681948735/blog/projects/todo-1_qnnb4o.png">
                             <img src="https://res.cloudinary.com/mosiur404/image/upload/w_400/v1681839138/blog/projects/todo-1_qnnb4o.png"/>
                         </a>
                     </div>
                     <div class="col-4">
-                        <h3>Phone</h3>
+                        <b>Phone</b>
                         <a href="https://res.cloudinary.com/mosiur404/image/upload/v1681948734/blog/projects/todo-2_dvpv0y.png">
                             <img src="https://res.cloudinary.com/mosiur404/image/upload/w_400/v1681839136/blog/projects/todo-2_dvpv0y.png"/>
                         </a>
                     </div>
                     <div class="col-4">
-                        <h3>Phone</h3>
+                        <b>Phone</b>
                         <a href="https://res.cloudinary.com/mosiur404/image/upload/v1681948735/blog/projects/todo-3_ms1j4t.png">
                             <img src="https://res.cloudinary.com/mosiur404/image/upload/w_400/v1681839135/blog/projects/todo-3_ms1j4t.png"/>
                         </a>

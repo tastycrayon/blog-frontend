@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { PROJECTS_ROOT_URL } from '$lib/constants';
+	import { setCursorToDefault, setCursorToHamburger } from '$lib/store';
 	import { PROJECTS, SIDE_PROJECTS } from './data';
 </script>
 
@@ -31,7 +32,11 @@
 		{#each PROJECTS as p}
 			<div class="col">
 				{#if p.post_image}
-					<a href={PROJECTS_ROOT_URL + '/' + p.post_slug}>
+					<a
+						href={PROJECTS_ROOT_URL + '/' + p.post_slug}
+						on:mouseenter={setCursorToHamburger}
+						on:mouseleave={setCursorToDefault}
+					>
 						<img
 							src={p.post_image.image_url || ''}
 							alt={p.post_image.image_title || p.post_title}
@@ -39,7 +44,11 @@
 						<div class="overlay" />
 					</a>
 				{/if}
-				<a href={PROJECTS_ROOT_URL + '/' + p.post_slug}>
+				<a
+					href={PROJECTS_ROOT_URL + '/' + p.post_slug}
+					on:mouseenter={setCursorToHamburger}
+					on:mouseleave={setCursorToDefault}
+				>
 					<h2 class="mt-2 mb-1">{p.post_title}</h2>
 				</a>
 				<small>{@html p.excerpt}</small>

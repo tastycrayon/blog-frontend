@@ -13,7 +13,7 @@ export const load = (async ({ params }) => {
       .toPromise();
     if (resError) throw resError;
     if (data)
-      return data.getPostWithCatBySlug
+      return { ...data.getPostWithCatBySlug }
   } catch (err) {
     throw error(404,);
   }
