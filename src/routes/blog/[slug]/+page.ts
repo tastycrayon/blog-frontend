@@ -2,7 +2,7 @@ import { error } from "@sveltejs/kit";
 import type { PageLoad } from "./$types";
 import { GetPostWithCatBySlugDocument } from "$lib/gql/generated";
 import type { GetPostWithCatBySlug, GetPostWithCatBySlugVariables } from "$lib/gql/generated";
-import { client, createClientWithFetch } from "$lib/client";
+import { createClientWithFetch } from "$lib/client";
 
 export const load = (async ({ params, fetch }) => {
   try {

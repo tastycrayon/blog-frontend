@@ -233,12 +233,9 @@ export const clientOpts: ClientOptions = {
 };
 
 
-let c: Client | undefined = undefined
 export const createClientWithFetch = (f: any) => {
-  if (c) return c
-  clientOpts.fetch = f;
-  c = createClient(clientOpts)
-  return c
+  clientOpts.fetch = f
+  return new Client(clientOpts)
 }
 
-export const client = createClient(clientOpts)
+export const client = new Client(clientOpts)
