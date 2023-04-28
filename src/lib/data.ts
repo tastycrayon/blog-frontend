@@ -101,4 +101,45 @@ export const SIDE_PROJECTS = [
                     </div>
                 </div>
                 `,
-    },]
+    },
+    {
+        post_image: {
+            image_title: 'Personal Blog',
+            image_url:
+                'https://res.cloudinary.com/mosiur404/image/upload/c_thumb,w_600,h_400,g_face/v1682657456/blog/projects/project-light_yt73if.png'
+        },
+        post_title: 'Personal Blog',
+        post_slug: 'personal-blog',
+        excerpt: `
+                <ul>
+                    <li>Website: <a href="https://mosi.vercel.app/blog">https://mosi.vercel.app/blog</a></li>
+                    <li>
+                        Github: <a href="https://github.com/tastycrayon/blog-frontend">&lt;Frontend/&gt;</a>,
+                        <a href="https://github.com/tastycrayon/blog-backend">&lt;Backend/&gt;</a>
+                    </li>
+                    <li>Tech: Go, Gqlgen, MySQL, Sveltekit</li>
+                </ul>`,
+        post_content: `
+                <div class="row">
+                    <div class="col-4">
+                        <b>Desktop</b>
+                        <a href="https://res.cloudinary.com/mosiur404/image/upload/v1682656690/blog/projects/blog-page_s3lshy.png">
+                            <img src="https://res.cloudinary.com/mosiur404/image/upload/w_400/v1682656690/blog/projects/blog-page_s3lshy.png"/>
+                        </a>
+                    </div>
+                    <div class="col-4">
+                        <b>Desktop</b>
+                        <a href="https://res.cloudinary.com/mosiur404/image/upload/v1682656691/blog/projects/project-page_spcidi.png">
+                            <img src="https://res.cloudinary.com/mosiur404/image/upload/w_400/v1682656691/blog/projects/project-page_spcidi.png"/>
+                        </a>
+                    </div>
+                    <div class="col-4">
+                        <b>Phone</b>
+                        <a href="https://res.cloudinary.com/mosiur404/image/upload/v1682656691/blog/projects/project-phone_vvrpuf.png">
+                            <img src="https://res.cloudinary.com/mosiur404/image/upload/w_400/v1682656691/blog/projects/project-phone_vvrpuf.png"/>
+                        </a>
+                    </div>
+                </div>
+                `,
+    },
+]
