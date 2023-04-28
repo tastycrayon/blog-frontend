@@ -11,7 +11,7 @@
 	} from '$lib/store';
 	import jwtDecode from 'jwt-decode';
 
-	// initContextClient(clientOpts);
+	initContextClient(clientOpts);
 	// setContextClient(client);
 	const token = getAccessToken();
 	const user = token ? jwtDecode<IAccessToken>(token) : null;

@@ -26,7 +26,7 @@
 	<ul>
 		<li>
 			<a href="/" class="contrast"
-				><img src="logo.svg" alt="logo" width="32px" height="auto" /> <strong>Mosi</strong></a
+				><img src="/logo.svg" alt="logo" width="32px" height="auto" /> <strong>Mosi</strong></a
 			>
 		</li>
 	</ul>

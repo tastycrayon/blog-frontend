@@ -2,7 +2,7 @@ import { GetPostsWithCategoryDocument } from "$lib/gql/generated";
 import type { GetPostsWithCategory, GetPostsWithCategoryVariables } from "$lib/gql/generated";
 import { client } from "$lib/client";
 import { error } from "@sveltejs/kit";
-import type { PageLoad } from "./$types";
+import type { PageServerLoad } from "./$types";
 import { BLOG_POST_COUNT } from "$lib/constants";
 
 export const load = (async ({ url }) => {
@@ -18,11 +18,12 @@ export const load = (async ({ url }) => {
       })
       .toPromise();
     if (resError) throw error(501, resError as any);
+
     if (!data?.getPostsWithCategory) throw error(501, ("Internal Error." as any));
     return { posts: data.getPostsWithCategory, count: data.getPostCount, pagination: { current, limit, offset } }
   } catch (err: any) {
-    throw error(err);
+    console.log(err)
+    throw error(404);
   }
-}) satisfies PageLoad;
+}) satisfies PageServerLoad;
 
-// export const ssr = true;

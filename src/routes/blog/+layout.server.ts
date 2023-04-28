@@ -1,10 +1,10 @@
 import { GetCategoriesDocument } from "$lib/gql/generated";
 import type { GetCategories, GetCategoriesVariables } from "$lib/gql/generated";
 import { client } from "$lib/client";
-import { error, type Load } from "@sveltejs/kit";
-import type { PageLoad } from "./$types";
+import { error, type ServerLoad } from "@sveltejs/kit";
+import type { PageServerLoad } from "./$types";
 
-export const load: Load = (async ({ }) => {
+export const load: ServerLoad = (async () => {
     try {
         const { data, error: resError } = await client
             .query<GetCategories, GetCategoriesVariables>(GetCategoriesDocument, {})
@@ -14,8 +14,8 @@ export const load: Load = (async ({ }) => {
 
         return { allCategories: data.getCategories, }
     } catch (err: any) {
-        throw error(404, err);
+        console.log(err)
+        throw error(404,);
     }
-}) satisfies PageLoad;
+}) satisfies PageServerLoad;
 
-// export const ssr = true;

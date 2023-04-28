@@ -2,10 +2,10 @@ import { GetPostsByCategoryDocument } from "$lib/gql/generated";
 import type { GetPostsByCategory, GetPostsByCategoryVariables } from "$lib/gql/generated";
 import { client } from "$lib/client";
 import { error } from "@sveltejs/kit";
-import type { PageLoad } from "./$types";
+import type { PageServerLoad } from "./$types";
 import { BLOG_POST_COUNT } from "$lib/constants";
 
-export const load = (async ({ url, params }) => {
+export const load: PageServerLoad = (async ({ url, params }) => {
     const page = url.searchParams.get('page') || '1'
     const current = Math.max(parseInt(page), 1)
 
@@ -26,6 +26,7 @@ export const load = (async ({ url, params }) => {
             cat: params.slug
         }
     } catch (err: any) {
-        throw error(err);
+        console.log(err)
+        throw error(404, err);
     }
-}) satisfies PageLoad;
+}) satisfies PageServerLoad;

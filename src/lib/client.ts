@@ -233,9 +233,13 @@ export const clientOpts: ClientOptions = {
 };
 
 
-export const createClientWithFetch = (f: any) => {
-  clientOpts.fetch = f
-  return new Client(clientOpts)
-}
+// export const createClientWithFetch = (f: any) => {
+//   clientOpts.fetch = f
+//   return new Client(clientOpts)
+// }
 
-export const client = new Client(clientOpts)
+// export const client = new Client(clientOpts)
+export const client = new Client({
+  url: SERVER_URL + "/query",
+  exchanges: [cacheExchange, fetchExchange],
+});
