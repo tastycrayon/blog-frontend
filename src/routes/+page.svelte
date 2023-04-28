@@ -24,7 +24,7 @@
 							<a
 								role="button"
 								href="projects"
-								class="my-2 w-auto"
+								class="my-2 w-auto primary outline"
 								on:mouseenter={setCursorToHamburger}
 								on:mouseleave={setCursorToDefault}><span>See My Work</span> +</a
 							>
