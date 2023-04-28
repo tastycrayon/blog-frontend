@@ -23,7 +23,7 @@
 	<div class={'menu-inside' + ($MenuStore ? ' open' : '')}>
 		<div class="menu-nav-container container">
 			<div class="row">
-				<div class="col-6">
+				<div class="col-12 col-md-6">
 					<ul class="menu-nav-links py-2">
 						{#each internalLinks as item}
 							<li
@@ -54,7 +54,7 @@
 						<!-- icons  -->
 					</ul>
 				</div>
-				<div class="col-6">
+				<div class="col-12 col-md-6">
 					<div class="cat-container">
 						<Cat />
 					</div>
