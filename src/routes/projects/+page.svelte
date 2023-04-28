@@ -4,6 +4,15 @@
 	import { PROJECTS, SIDE_PROJECTS } from '$lib/data';
 </script>
 
+<svelte:head>
+	<title>Projects - Mosi</title>
+	<meta property="og:title" content="HOME | MOSI" />
+	<meta property="og:description" content="A Bengali full-stack dev with a lot of dedication" />
+	<meta
+		property="og:image"
+		content="https://res.cloudinary.com/mosiur404/image/upload/v1682434985/blog/opengraph_jk0diq.png"
+	/>
+</svelte:head>
 <div class="container">
 	<header>
 		<h1 class="mb-0">Mosi's Projects</h1>

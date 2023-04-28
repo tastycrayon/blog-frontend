@@ -14,6 +14,7 @@
 
 <!-- OPENGRAPH -->
 <svelte:head>
+	<title>Blog - Mosi</title>
 	<meta property="og:title" content="BLOG | MOSI" />
 	<!-- <meta property="og:description" content="A Bengali full-stack dev with a lot of dedication" /> -->
 	<meta

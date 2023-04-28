@@ -38,6 +38,7 @@
 
 <!-- OPENGRAPH -->
 <svelte:head>
+	<title>Home - Mosi</title>
 	<meta property="og:title" content="HOME | MOSI" />
 	<meta property="og:description" content="A Bengali full-stack dev with a lot of dedication" />
 	<meta
