@@ -49,7 +49,7 @@
 				{#each internalLinks as links}
 					<li><a href={links.url}>{links.component}</a></li>
 				{/each}
-				<li><a href="contact" role="button">Button</a></li>
+				<li><a href={MenuButton.url} role="button">{MenuButton.component}</a></li>
 			</ul>
 		</details>
 	</div>
