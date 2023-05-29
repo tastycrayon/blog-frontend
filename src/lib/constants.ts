@@ -1,7 +1,9 @@
-export const BLOG_ROOT_URL = 'blog';
-export const PROJECTS_ROOT_URL = 'projects';
-export const CATEGORY_ROOT_URL = 'category';
+export const COOKIE_OPTIONS = { httpOnly: false, secure: import.meta.env.PROD };
 
+export const LOGOUT_PATH = '/logout';
+export const BLOG_ROOT_URL = '/blog';
+export const PROJECTS_ROOT_URL = '/projects';
+export const CATEGORY_ROOT_URL = '/category';
 export const internalLinks = [
 	{
 		component: 'HOME',

@@ -1,19 +1,17 @@
-import { writable } from "svelte/store";
-import type { AuthState, IAccessToken } from "./client";
+import { writable } from 'svelte/store';
 
 // cursor store
 export enum CursorTypes {
-  default = "default",
-  hamburger = "hamburger",
-  sliderDrag = "sliderDrag",
+	default = 'default',
+	hamburger = 'hamburger',
+	sliderDrag = 'sliderDrag'
 }
 
 export const CursorStore = writable<CursorTypes>(CursorTypes.default);
 
 export const setCursorToDefault = () => CursorStore.set(CursorTypes.default);
 
-export const setCursorToHamburger = () =>
-  CursorStore.set(CursorTypes.hamburger);
+export const setCursorToHamburger = () => CursorStore.set(CursorTypes.hamburger);
 
 export const setCursorToSlider = () => CursorStore.set(CursorTypes.sliderDrag);
 
@@ -29,17 +27,14 @@ export const setDayNightToggler = () => DayNightStore.update((t) => !t);
 export const setDayToggler = () => DayNightStore.set(true);
 export const setNightToggler = () => DayNightStore.set(false);
 export const handleToggleDay = () => {
-  if (!window) return;
-  setDayNightToggler();
-  document.documentElement.dataset.theme = 'light';
+	if (!window) return;
+	setDayNightToggler();
+	document.documentElement.dataset.theme = 'light';
 };
 export const handleToggleNight = () => {
-  if (!window) return;
-  setDayNightToggler();
-  document.documentElement.dataset.theme = 'dark';
+	if (!window) return;
+	setDayNightToggler();
+	document.documentElement.dataset.theme = 'dark';
 };
 
 // login
-export const userState = writable<IAccessToken | null>(null)
-export const setUserState = (x: IAccessToken | null) => userState.set(x)
-export const upadateUserState = (x: IAccessToken) => userState.update((t) => ({ ...t, ...x }))

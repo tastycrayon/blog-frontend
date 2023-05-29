@@ -1,21 +1,14 @@
-import { GetCategoriesDocument } from "$lib/gql/generated";
-import type { GetCategories, GetCategoriesVariables } from "$lib/gql/generated";
-import { client } from "$lib/client";
-import { error, type ServerLoad } from "@sveltejs/kit";
-import type { PageServerLoad } from "./$types";
+import { HttpStatusCode } from '$lib/statuscodes';
+import { error } from '@sveltejs/kit';
+import type { LayoutServerLoad } from './$types';
+import type { ITag } from '$lib/types';
 
-export const load: ServerLoad = (async () => {
-    try {
-        const { data, error: resError } = await client
-            .query<GetCategories, GetCategoriesVariables>(GetCategoriesDocument, {})
-            .toPromise();
-        if (resError) throw error(501, resError as any);
-        if (!data?.getCategories) throw error(501, ("Internal Error." as any));
-
-        return { allCategories: data.getCategories, }
-    } catch (err: any) {
-        console.log(err)
-        throw error(404,);
-    }
-}) satisfies PageServerLoad;
-
+export const load = (async ({ locals }) => {
+	try {
+		const tags = await locals.pb.collection('tags').getFullList<ITag>({ sort: 'title' });
+		return { allTags: structuredClone(tags) as ITag[] };
+	} catch (err) {
+		console.error(err);
+		throw error(HttpStatusCode.INTERNAL_SERVER_ERROR, 'Error Loading Tags.');
+	}
+}) satisfies LayoutServerLoad;

@@ -4,31 +4,27 @@
 	import type { PageData } from './$types';
 	export let data: PageData;
 
-	$: ({ post, PROJECTS, SIDE_PROJECTS } = data);
+	$: ({ project, projects, side_projects } = data);
 	const links = [
 		{ name: 'HOME', url: '/' },
 		{ name: 'PROJECTS', url: '/projects' }
 	];
 </script>
 
-<Breadcrumb title={post.post_title} items={links} />
+<Breadcrumb title={project.title} items={links} />
 <div>
 	<hr />
 </div>
 <div class="container mt-2 mt-lg-5">
 	<div class="row">
 		<div class="col-12 col-lg-9">
-			<header><h1 class="mb-1">{post.post_title || ''}</h1></header>
-			{#if post?.post_image}
-				<img
-					class="w-100"
-					src={post?.post_image.image_url || ''}
-					alt={post?.post_image.image_title || post.post_title}
-				/>
+			<header><h1 class="mb-1">{project.title || ''}</h1></header>
+			{#if project.cover}
+				<img class="w-100" src={project.cover} alt={project.title} />
 			{/if}
 			<div class="content my-2">
-				<p>{@html post.excerpt || ''}</p>
-				<p>{@html post.post_content || ''}</p>
+				<p>{@html project.excerpt || ''}</p>
+				<p>{@html project.content || ''}</p>
 			</div>
 			<footer>
 				<!-- <nav>
@@ -47,17 +43,17 @@
 		<aside class="col-12 col-lg-3">
 			<h3 class="mb-1">Projects</h3>
 			<ul>
-				{#each PROJECTS as p}
+				{#each projects as p}
 					<li class="category-item py-1">
-						<a class="contrast" href={'/' + PROJECTS_ROOT_URL + '/' + p.post_slug}
-							><big>{p.post_title}</big>
+						<a class="contrast" href={[PROJECTS_ROOT_URL, '/', p.slug].join('')}
+							><big>{p.title}</big>
 						</a>
 					</li>
 				{/each}
-				{#each SIDE_PROJECTS as p}
+				{#each side_projects as p}
 					<li class="category-item py-1">
-						<a class="contrast" href={'/' + PROJECTS_ROOT_URL + '/' + p.post_slug}
-							><big>{p.post_title}</big>
+						<a class="contrast" href={[PROJECTS_ROOT_URL, '/', p.slug].join('')}
+							><big>{p.title}</big>
 						</a>
 					</li>
 				{/each}

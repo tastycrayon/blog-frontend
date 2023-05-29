@@ -6,7 +6,7 @@
 	import Pagination from '$components/pagination.svelte';
 	import { setCursorToDefault, setCursorToHamburger } from '$lib/store';
 	export let data: PageData;
-	$: ({ posts, allCategories, count } = data);
+	$: ({ posts, allTags, count } = data);
 	$: ({
 		pagination: { current, limit }
 	} = data);
@@ -29,12 +29,10 @@
 		<h1 class="mb-0">Mosi's Blog</h1>
 		<nav>
 			<ul>
-				{#each allCategories as cat}
+				{#each allTags as tag}
 					<li>
-						<a
-							class="contrast"
-							href={['', BLOG_ROOT_URL, CATEGORY_ROOT_URL, cat.category_slug].join('/')}
-							><u><big>{cat.category_title}</big></u>
+						<a class="contrast" href={[BLOG_ROOT_URL, CATEGORY_ROOT_URL, '/', tag.slug].join('')}
+							><u><big>{tag.title}</big></u>
 						</a>
 					</li>
 				{/each}
@@ -48,43 +46,41 @@
 
 <div class="container">
 	<div class="row g-4">
-		{#each posts as item}
+		{#each posts as post}
 			<div class="col-12 col-md-6 col-lg-4">
-				{#if item.post.post_image}
+				{#if post.thumb}
 					<a
-						href={BLOG_ROOT_URL + '/' + item.post.post_slug}
+						href={[BLOG_ROOT_URL, '/', post.slug].join('')}
 						on:mouseenter={setCursorToHamburger}
 						on:mouseleave={setCursorToDefault}
 					>
-						<img
-							class="w-100"
-							src={item.post.post_image.thumbnail_url || ''}
-							alt={item.post.post_image.image_title || item.post.post_title}
-						/>
+						<img class="w-100" src={post.thumb || ''} alt={post.title} />
 					</a>
 				{/if}
 				<div class="row justify-content-between">
-					<small class="col">{timeSince(item.post.created_at)} ago</small>
+					<small class="col">{timeSince(0)} ago</small>
 					<nav class="col-auto">
-						{#if item.categories}
-							{#each item.categories as { category_title, category_slug, description }}
-								<a
-									class="contrast col p-0 m-0"
-									href={['', BLOG_ROOT_URL, CATEGORY_ROOT_URL, category_slug].join('/')}
-									title={description}
-								>
-									<u class="p-1"><small>{category_title}</small></u>
-								</a>
+						{#if post.tags}
+							{#each post.tags as tag}
+								{#if typeof tag === 'object'}
+									<a
+										class="contrast col p-0 m-0"
+										href={[BLOG_ROOT_URL, CATEGORY_ROOT_URL, '/', tag.slug].join('')}
+										title={tag.description}
+									>
+										<u class="p-1"><small>{tag.title}</small></u>
+									</a>
+								{/if}
 							{/each}
 						{/if}
 					</nav>
 				</div>
 				<a
-					href={BLOG_ROOT_URL + '/' + item.post.post_slug}
+					href={[BLOG_ROOT_URL, '/', post.slug].join('')}
 					on:mouseenter={setCursorToHamburger}
 					on:mouseleave={setCursorToDefault}
 				>
-					<h2 class="mb-2">{item.post.post_title}</h2>
+					<h2 class="mb-2">{post.title}</h2>
 				</a>
 			</div>
 		{/each}

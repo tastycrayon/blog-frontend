@@ -4,7 +4,7 @@
 	import type { PageData } from './$types';
 	import Pagination from '$components/pagination.svelte';
 	export let data: PageData;
-	$: ({ posts, allCategories, count, cat } = data);
+	$: ({ posts, allTags, count, tag: currentTag } = data);
 	$: ({
 		pagination: { current, limit }
 	} = data);
@@ -25,12 +25,12 @@
 		<h1 class="mb-0">Mosi's Blog</h1>
 		<nav>
 			<ul>
-				{#each allCategories as c}
+				{#each allTags as tag}
 					<li>
 						<a
-							class={`${c.category_slug == cat ? ' primary' : 'contrast'}`}
-							href={['', BLOG_ROOT_URL, CATEGORY_ROOT_URL, c.category_slug].join('/')}
-							><u><big>{c.category_title}</big></u>
+							class={`${tag.slug == currentTag.slug ? ' primary' : 'contrast'}`}
+							href={[BLOG_ROOT_URL, CATEGORY_ROOT_URL, '/', tag.slug].join('')}
+							><u><big>{tag.title}</big></u>
 						</a>
 					</li>
 				{/each}
@@ -46,20 +46,17 @@
 	<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
 		{#each posts as post}
 			<div class="col">
-				{#if post.post_image}
-					<a href={'/' + BLOG_ROOT_URL + '/' + post.post_slug}>
-						<img
-							src={post.post_image.image_url || ''}
-							alt={post.post_image.image_title || post.post_title}
-						/>
+				{#if post.cover}
+					<a href={[BLOG_ROOT_URL, '/', post.slug].join('')}>
+						<img src={post.cover || ''} alt={post.title} />
 					</a>
 				{/if}
 				<div class="row justify-content-between">
-					<small class="col">{timeSince(post.created_at)} ago</small>
+					<small class="col">{timeSince(0)} ago</small>
 					<nav class="col-auto">&nbsp;</nav>
 				</div>
-				<a href={'/' + BLOG_ROOT_URL + '/' + post.post_slug}>
-					<h2>{post.post_title}</h2>
+				<a href={[BLOG_ROOT_URL, '/', post.slug].join('')}>
+					<h2>{post.title}</h2>
 				</a>
 			</div>
 		{/each}

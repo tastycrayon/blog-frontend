@@ -47,6 +47,7 @@
 		</div>
 		<div class="col-12 col-lg-6">
 			<details open>
+				<!-- svelte-ignore a11y-no-redundant-roles -->
 				<summary role="button" class="outline">About Me</summary>
 				<p>
 					<big>F</big>ocused and enthusiastic developer with a keen interest in software development
@@ -57,6 +58,7 @@
 				</p>
 			</details>
 			<details>
+				<!-- svelte-ignore a11y-no-redundant-roles -->
 				<summary role="button" class="outline">Skills</summary>
 				<i>- Languages</i>
 				<ul>
@@ -76,6 +78,7 @@
 				</ul>
 			</details>
 			<details>
+				<!-- svelte-ignore a11y-no-redundant-roles -->
 				<summary role="button" class="outline">Education</summary>
 				<ul>
 					<li>B. SC in Computer Science & Engineering</li>
@@ -83,6 +86,7 @@
 				</ul>
 			</details>
 			<details>
+				<!-- svelte-ignore a11y-no-redundant-roles -->
 				<summary role="button" class="outline">Links</summary>
 				<ul>
 					{#each ICONS_LINKS as icon}

@@ -1,23 +1,17 @@
-import { error, type ServerLoad } from "@sveltejs/kit";
-import type { PageServerLoad } from "./$types";
-import { GetPostWithCatBySlugDocument } from "$lib/gql/generated";
-import type { GetPostWithCatBySlug, GetPostWithCatBySlugVariables } from "$lib/gql/generated";
-import { client, } from "$lib/client";
+import { HttpStatusCode } from '$lib/statuscodes';
+import { error } from '@sveltejs/kit';
+import type { PageServerLoad } from './$types';
+import type { IPost, ITag } from '$lib/types';
 
-export const load = (async ({ params }) => {
-  try {
-    const { data, error: resError } = await client
-      .query<GetPostWithCatBySlug, GetPostWithCatBySlugVariables>(GetPostWithCatBySlugDocument, {
-        slug: params.slug,
-      })
-      .toPromise();
-    if (resError) throw resError;
-
-    if (!data?.getPostWithCatBySlug) throw error(501, ("No Posts Found." as any));
-    return data.getPostWithCatBySlug
-  } catch (err: any) {
-    console.log({ err })
-    throw error(404);
-  }
+export const load = (async ({ locals, params }) => {
+	try {
+		const post = await locals.pb
+			.collection('posts')
+			.getFirstListItem<IPost>(`slug = "${params.slug}"`);
+		if (!post) throw error(HttpStatusCode.NOT_FOUND, 'Error Loading Post.');
+		return { post: structuredClone(post) as IPost };
+	} catch (err) {
+		console.error(err);
+		throw error(HttpStatusCode.INTERNAL_SERVER_ERROR, 'Error Loading Post.');
+	}
 }) satisfies PageServerLoad;
-

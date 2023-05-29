@@ -1,7 +1,12 @@
 <script lang="ts">
 	import { PROJECTS_ROOT_URL } from '$lib/constants';
 	import { setCursorToDefault, setCursorToHamburger } from '$lib/store';
-	import { PROJECTS, SIDE_PROJECTS } from '$lib/data';
+	import type { PageData } from './$types';
+
+	export let data: PageData;
+	$: ({ allProjects } = data);
+	$: projects = allProjects.filter((e) => !e.is_side_project);
+	$: side_projects = allProjects.filter((e) => e.is_side_project);
 </script>
 
 <svelte:head>
@@ -38,27 +43,24 @@
 		<big><i>Main Projects</i></big>
 	</div>
 	<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-		{#each PROJECTS as p}
+		{#each projects as p}
 			<div class="col">
-				{#if p.post_image}
+				{#if p.cover}
 					<a
-						href={PROJECTS_ROOT_URL + '/' + p.post_slug}
+						href={[PROJECTS_ROOT_URL, '/', p.slug].join('')}
 						on:mouseenter={setCursorToHamburger}
 						on:mouseleave={setCursorToDefault}
 					>
-						<img
-							src={p.post_image.image_url || ''}
-							alt={p.post_image.image_title || p.post_title}
-						/>
+						<img src={p.cover || ''} alt={p.title} />
 						<div class="overlay" />
 					</a>
 				{/if}
 				<a
-					href={PROJECTS_ROOT_URL + '/' + p.post_slug}
+					href={[PROJECTS_ROOT_URL, '/', p.slug].join('')}
 					on:mouseenter={setCursorToHamburger}
 					on:mouseleave={setCursorToDefault}
 				>
-					<h2 class="mt-2 mb-1">{p.post_title}</h2>
+					<h2 class="mt-2 mb-1">{p.title}</h2>
 				</a>
 				<small>{@html p.excerpt}</small>
 			</div>
@@ -72,19 +74,16 @@
 		<big><i>Side Projects</i></big>
 	</div>
 	<div class="row g-4">
-		{#each SIDE_PROJECTS as sp}
+		{#each side_projects as sp}
 			<div class="col-12 col-md-6 col-lg-4">
-				{#if sp.post_image}
-					<a href={PROJECTS_ROOT_URL + '/' + sp.post_slug}>
-						<img
-							src={sp.post_image.image_url || ''}
-							alt={sp.post_image.image_title || sp.post_title}
-						/>
+				{#if sp.cover}
+					<a href={[PROJECTS_ROOT_URL, '/', sp.slug].join('')}>
+						<img src={sp.cover} alt={sp.title} />
 						<div class="overlay" />
 					</a>
 				{/if}
-				<a href={PROJECTS_ROOT_URL + '/' + sp.post_slug}>
-					<h2 class="mt-2 mb-1">{sp.post_title}</h2>
+				<a href={[PROJECTS_ROOT_URL, '/', sp.slug].join('')}>
+					<h2 class="mt-2 mb-1">{sp.title}</h2>
 				</a>
 				<small>{@html sp.excerpt}</small>
 			</div>

@@ -7,10 +7,8 @@
 		handleToggleNight,
 		setCursorToDefault,
 		setCursorToHamburger,
-		setDayNightToggler,
 		setDayToggler,
-		setNightToggler,
-		userState
+		setNightToggler
 	} from '$lib/store';
 	import { onMount } from 'svelte';
 	import { page } from '$app/stores';
@@ -44,6 +42,7 @@
 			{/if}
 		</ul>
 		<details role="list" class="d-inline my-auto">
+			<!-- svelte-ignore a11y-no-redundant-roles -->
 			<summary aria-haspopup="listbox" role="button" class="contrast outline"> Menu </summary>
 			<ul role="listbox">
 				{#each internalLinks as links}
@@ -66,9 +65,7 @@
 				>
 			</li>
 		{/each}
-		{#if $userState}
-			<li>ACCOUNT</li>
-		{/if}
+
 		{#if $DayNightStore}
 			<li>
 				<a href="/" on:click|preventDefault={handleToggleNight}> <Icons name="sun" /></a>

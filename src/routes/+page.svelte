@@ -1,7 +1,8 @@
 <script>
-	import CanvasAlt from '$components/canvas-alt.svelte';
+	import CanvasAlt from '$components/canvas.svelte';
 	import MenuBtn from '$components/menu/menu-btn.svelte';
 	import MenuContent from '$components/menu/menu-content.svelte';
+	import { PROJECTS_ROOT_URL } from '$lib/constants';
 	import { setCursorToDefault, setCursorToHamburger } from '$lib/store';
 </script>
 
@@ -23,7 +24,7 @@
 						<div>
 							<a
 								role="button"
-								href="projects"
+								href={PROJECTS_ROOT_URL}
 								class="my-2 w-auto primary outline"
 								on:mouseenter={setCursorToHamburger}
 								on:mouseleave={setCursorToDefault}><span>Check My Projects</span> +</a
