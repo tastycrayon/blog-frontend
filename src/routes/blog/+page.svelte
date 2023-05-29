@@ -58,7 +58,7 @@
 					</a>
 				{/if}
 				<div class="row justify-content-between">
-					<small class="col">{timeSince(0)} ago</small>
+					<small class="col">{timeSince(Date.parse(post.created))} ago</small>
 					<nav class="col-auto">
 						{#if post.tags}
 							{#each post.tags as tag}

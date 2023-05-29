@@ -52,7 +52,7 @@
 					</a>
 				{/if}
 				<div class="row justify-content-between">
-					<small class="col">{timeSince(0)} ago</small>
+					<small class="col">{timeSince(Date.parse(post.created))} ago</small>
 					<nav class="col-auto">&nbsp;</nav>
 				</div>
 				<a href={[BLOG_ROOT_URL, '/', post.slug].join('')}>
