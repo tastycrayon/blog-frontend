@@ -29,7 +29,7 @@ export const internalLinks = [
 
 export const MenuButton = {
 	component: 'RESUME',
-	url: 'resume.pdf',
+	url: '/resume.pdf',
 	img: ''
 };
 
@@ -60,6 +60,6 @@ export const ICONS_LINKS: Icon[] = [
 	{
 		name: 'linkedin',
 		url: 'https://www.linkedin.com/in/mosiur404',
-		component: 'linkedin.com/mosiur404'
+		component: 'linkedin.com/in/mosiur404'
 	}
 ];

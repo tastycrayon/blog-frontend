@@ -34,26 +34,4 @@ export const load: PageServerLoad = (async ({ locals, url, params }) => {
 		console.error(err);
 		throw error(HttpStatusCode.INTERNAL_SERVER_ERROR, 'Error Loading Post.');
 	}
-	// const page = url.searchParams.get('page') || '1'
-	// const current = Math.max(parseInt(page), 1)
-	// let limit: number = BLOG_POST_COUNT; //change later
-	// let offset: number = (current - 1) * limit;
-	// try {
-	//     const { data, error: resError } = await client
-	//         .query<GetPostsByCategory, GetPostsByCategoryVariables>(GetPostsByCategoryDocument, {
-	//             limit, offset, orderBy: "ASC", cat: params.slug
-	//         })
-	//         .toPromise();
-	//     if (resError) throw error(501, resError as any);
-	//     if (!data?.getPostsByCategory) throw error(404, ("No Posts Found." as any));
-	//     return {
-	//         posts: data.getPostsByCategory,
-	//         count: data.getPostCount,
-	//         pagination: { current, limit, offset },
-	//         cat: params.slug
-	//     }
-	// } catch (err: any) {
-	//     console.log(err)
-	//     throw error(404, err);
-	// }
 }) satisfies PageServerLoad;

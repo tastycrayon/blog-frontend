@@ -2,7 +2,7 @@
 	export let name: keyof typeof icons = 'github';
 	export let width: string = '32px';
 	export let height: string = '32px';
-
+	export let fill: boolean = false;
 	const icons = {
 		upwork: {
 			box: 56.1,
@@ -57,8 +57,8 @@
 	{width}
 	{height}
 	viewBox="0 0 {icon.box} {icon.box}"
-	fill="none"
-	stroke="currentColor"
+	fill={fill ? 'currentColor' : 'none'}
+	stroke={!fill ? 'currentColor' : 'none'}
 	xmlns="http://www.w3.org/2000/svg"
 >
 	{@html icon.svg}

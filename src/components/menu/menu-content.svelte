@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { page } from '$app/stores';
-	import { internalLinks } from '$lib/constants';
+	import { ICONS_LINKS, internalLinks } from '$lib/constants';
 	import {
 		DayNightStore,
 		MenuStore,
@@ -12,7 +12,6 @@
 	} from '$lib/store';
 	import { onDestroy } from 'svelte';
 	import Cat from './cat.svelte';
-	import MenuIcons from './menu-icons.svelte';
 	import Icons from '$components/icons.svelte';
 	onDestroy(() => {
 		setMenuHide();
@@ -50,7 +49,13 @@
 							</li>
 						{/if}
 						<!-- icons  -->
-						<MenuIcons />
+						<li class="nav-icons-container">
+							{#each ICONS_LINKS as item}
+								<a title={item.name} href={item.url} target="_blank" rel="noopener noreferrer">
+									<Icons class="menu-icon" name={item.name} width="32px" height="32px" />
+								</a>
+							{/each}
+						</li>
 						<!-- icons  -->
 					</ul>
 				</div>
@@ -133,6 +138,30 @@
 				.menu-nav-links li a {
 					transform: translate(0);
 				}
+			}
+		}
+
+		// nav icons
+		.nav-icons-container {
+			margin-top: 2rem;
+			transform: translate(-300%);
+			transition: transform 0.8s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+			transition-delay: 0.8s;
+			& > a {
+				margin-right: 0.25rem;
+				transform: rotate(-10deg);
+				transition: rotate 3s linear;
+				transition-delay: 1s;
+			}
+		}
+		.open .nav-icons-container {
+			transform: translateX(0);
+			& a {
+				transform: rotate(0deg);
+				transition: transform 0.8s ease-out;
+				// & svg.menu-icon {
+				// 	stroke: var(--primary);
+				// }
 			}
 		}
 	}

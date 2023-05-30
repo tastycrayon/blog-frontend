@@ -23,7 +23,7 @@
 			<ul>
 				{#each ICONS_LINKS as icon}
 					<li>
-						<a class="contrast" href={icon.url}
+						<a class="contrast" href={icon.url} target="_blank" rel="noopener noreferrer"
 							><Icons name={icon.name} width="24px" height="24px" /></a
 						>
 					</li>
@@ -91,7 +91,9 @@
 				<ul>
 					{#each ICONS_LINKS as icon}
 						<li>
-							<a class="contrast" href={icon.url}><i>{icon.component}</i> </a>
+							<a class="contrast" target="_blank" rel="noopener noreferrer" href={icon.url}
+								><i>{icon.component}</i>
+							</a>
 						</li>
 					{/each}
 				</ul>

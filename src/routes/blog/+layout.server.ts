@@ -12,3 +12,4 @@ export const load = (async ({ locals }) => {
 		throw error(HttpStatusCode.INTERNAL_SERVER_ERROR, 'Error Loading Tags.');
 	}
 }) satisfies LayoutServerLoad;
+export const prerender = false;
