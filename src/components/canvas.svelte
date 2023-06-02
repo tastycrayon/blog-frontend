@@ -7,8 +7,7 @@
 	import { setCursorToDefault, setCursorToSlider } from '$lib/store';
 	let width = 1;
 	let height = 1;
-	// let mouse = { x: 1, y: 1 };
-	// Canvas
+
 	let canvas: HTMLCanvasElement | undefined;
 	let renderer: THREE.WebGLRenderer;
 	let windowListeners: { x: string; y: any }[] = [];
@@ -24,8 +23,8 @@
 		renderer = new THREE.WebGLRenderer({
 			canvas: canvas,
 			antialias: true,
-			alpha: true
-			// powerPreference: 'high-performance'
+			alpha: true,
+			powerPreference: 'high-performance'
 		});
 		renderer.setSize(width, height);
 		renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
@@ -39,7 +38,7 @@
 		camera.position.x = 0;
 		camera.position.y = 0;
 		camera.position.z = 2;
-		// camera.castShadow = true;
+		camera.castShadow = false;
 		scene.add(camera);
 		/**
 		 * Event Listeners
@@ -96,9 +95,6 @@
 		controls.enablePan = false;
 
 		const clock = new THREE.Clock();
-
-		// scene.background = new THREE.Color(0x10c17d);
-		// renderer.setClearColor()
 
 		//helpers
 		camera.lookAt(scene.position);

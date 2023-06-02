@@ -1,10 +1,25 @@
 <script lang="ts">
 	import { setMenuToggler, MenuStore } from '$lib/store';
+	import { onMount, onDestroy } from 'svelte';
+
+	let short = true;
+	let timeout: number | undefined;
+	onMount(() => {
+		timeout = setTimeout(() => {
+			short = false;
+		}, 1000);
+	});
+	onDestroy(() => {
+		if (timeout) clearTimeout(timeout);
+	});
+	$: barClass = `menu-bar ${short ? 'short' : ''}`;
 </script>
 
 <div class="container position-relative">
 	<div class={'menu-button-wrapper' + ($MenuStore ? ' open' : '')}>
-		<button on:click={setMenuToggler} type="button" class="menu-button"><span /></button>
+		<button on:click={setMenuToggler} type="button" class="menu-button"
+			><span class={barClass} /></button
+		>
 	</div>
 </div>
 
@@ -100,5 +115,12 @@
 		// @include mq("tablet", max) {
 		//   display: none;
 		// }
+	}
+	//menu-bar
+
+	span.menu-bar.short::before,
+	span.menu-bar.short::after {
+		height: 15px;
+		background-color: yellow !important;
 	}
 </style>
