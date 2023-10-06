@@ -40,7 +40,7 @@
 		<div class="col-12 col-lg-6">
 			<div class="img-box my-3">
 				<img
-					src="https://res.cloudinary.com/mosiur404/image/upload/w_440/v1682208395/blog/mypic_exzajg.png"
+					src="https://res.cloudinary.com/mosiur404/image/upload/w_440/v1696619233/blog/sq7cuqvr79aqucdlytbk.jpg"
 					alt=""
 				/>
 			</div>
