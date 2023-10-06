@@ -41,7 +41,7 @@
 			<div class="img-box my-3">
 				<img
 					src="https://res.cloudinary.com/mosiur404/image/upload/w_440/v1696619233/blog/sq7cuqvr79aqucdlytbk.jpg"
-					alt=""
+					alt="mypic"
 				/>
 			</div>
 		</div>
