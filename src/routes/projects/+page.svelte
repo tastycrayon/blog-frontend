@@ -40,7 +40,7 @@
 </div>
 <div class="container">
 	<div class="py-2">
-		<big><i>Main Projects</i></big>
+		<!-- <big><i>Main Projects</i></big> -->
 	</div>
 	<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
 		{#each projects as p}
@@ -71,7 +71,7 @@
 <div><hr /></div>
 <div class="container">
 	<div class="py-2">
-		<big><i>Side Projects</i></big>
+		<!-- <big><i>Side Projects</i></big> -->
 	</div>
 	<div class="row g-4">
 		{#each side_projects as sp}
