@@ -18,9 +18,9 @@
 				<div class="col-12 col-md-6 d-flex align-items-start align-items-md-center column">
 					<div class="hgroup">
 						<h1 class="mb-1">
-							Hi, I'm<br />Mosiur Rahman
+							Hi, I'm<br />Markus
 						</h1>
-						<big>A Bengali full-stack dev<br />with a lot of dedication</big>
+						<big>A software engineer<br />with a lot of dedication</big>
 						<div>
 							<a
 								role="button"
