@@ -37,13 +37,13 @@
 						{/each}
 						{#if $DayNightStore}
 							<li>
-								<a href="/" on:click|preventDefault={handleToggleNight}
+								<a href="/" on:click|preventDefault={handleToggleNight}  on:click={setMenuHide} 
 									><Icons name="sun" width="32px" height="32px" />----</a
 								>
 							</li>
 						{:else}
 							<li>
-								<a href="/" on:click|preventDefault={handleToggleDay}
+								<a href="/" on:click|preventDefault={handleToggleDay} on:click={setMenuHide} 
 									><Icons name="moon" width="32px" height="32px" />----</a
 								>
 							</li>
@@ -70,7 +70,7 @@
 </nav>
 
 <style lang="scss">
-	@import 'src/styles/custom-variable.scss';
+	@use '$lib/styles/custom-variable.scss' as *;
 	.menu-holder {
 		& .menu-inside {
 			position: fixed;
@@ -160,7 +160,7 @@
 				transform: rotate(0deg);
 				transition: transform 0.8s ease-out;
 				// & svg.menu-icon {
-				// 	stroke: var(--primary);
+				// 	stroke: var(--pico-primary);
 				// }
 			}
 		}
