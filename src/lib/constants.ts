@@ -42,11 +42,11 @@ type Icon = {
 	component: string;
 };
 export const ICONS_LINKS: Icon[] = [
-	{
-		name: 'upwork',
-		url: 'https://www.upwork.com/freelancers/~01816d245683177af1',
-		component: 'upwork.com/freelancers/~01816d245683177af1'
-	},
+	// {
+	// 	name: 'upwork',
+	// 	url: 'https://www.upwork.com/freelancers/~01816d245683177af1',
+	// 	component: 'upwork.com/freelancers/~01816d245683177af1'
+	// },
 	{
 		name: 'envelope',
 		url: 'mailto:mosiurdev@gmail.com',
