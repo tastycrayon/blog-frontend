@@ -1,0 +1,136 @@
+// Use @use for custom SCSS files
+@use './custom-variable' as *; // assuming custom-variable.scss contains variables, mixins, etc.
+
+// Pico CSS using @use
+@use "@picocss/pico/scss/pico" with (
+  $semantic-root-element: "div#pico-root",
+  $theme-color: "jade",
+  $enable-classes: false,
+);
+
+
+// Bootstrap Grid - Assuming bootstrap-grid.scss contains grid-related styles
+@use './bootstrap-grid' as *;
+
+// Google Fonts - External @import is still valid
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&display=swap');
+// Commons Styles
+:root, :host {
+  // Colors
+  --primary: hsl(157 85% 41%);
+  --pico-primary: var(--primary);
+  --pico-primary-background: var(--primary);
+  // Typography
+ --pico-font-family: "Fira Code", system-ui, -apple-system, "Segoe UI", "Roboto", "Ubuntu",
+    "Cantarell", "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+    "Segoe UI Symbol", "Noto Color Emoji";
+ --pico-line-height: 1.5;
+ --pico-font-weight: 400;
+ --pico-font-size: 18px;
+
+  // Borders
+  //--pico-border-radius: 0.25rem;
+  //--pico-border-radius: 1.75rem;
+ --pico-border-radius: 0;
+ --pico-border-width: 1px;
+ --pico-outline-width: 3px;
+
+  // Spacings
+ --pico-spacing: 1rem;
+
+  // Spacings for typography elements
+ --pico-typography-spacing-vertical: 1.5rem;
+
+  // Spacings for body > header, body > main, body > footer, section, article
+ --pico-block-spacing-vertical: calc(var(--spacing) * 2);
+ --pico-block-spacing-horizontal: var(--spacing);
+
+  // Spacings for form elements and button
+ --pico-form-element-spacing-vertical: 0.75rem;
+ --pico-form-element-spacing-horizontal: 1.5rem;
+
+  // Spacings for nav component
+ --pico-nav-element-spacing-vertical: 1rem;
+ --pico-nav-element-spacing-horizontal: 0.5rem;
+ --pico-nav-link-spacing-vertical: 0.5rem;
+  //--pico-nav-link-spacing-horizontal: 0.5rem;
+ --pico-nav-link-spacing-horizontal: 1.25rem;
+
+  // Font weight for form labels & fieldsets legend
+ --pico-form-label-font-weight: var(--font-weight);
+
+  // Transitions
+ --pico-transition: 0.2s ease-in-out;
+
+  // Modal (<dialog>)
+ --pico-modal-overlay-backdrop-filter: blur(0.25rem);
+}
+
+// Small
+small {
+ --pico-font-size: 0.875em;
+}
+
+// Headings
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+ --pico-font-weight: 700;
+}
+
+h1 {
+ --pico-font-size: 2rem;
+ --pico-typography-spacing-vertical: 3rem;
+}
+
+h2 {
+ --pico-font-size: 1.75rem;
+ --pico-typography-spacing-vertical: 2.625rem;
+}
+
+h3 {
+ --pico-font-size: 1.5rem;
+ --pico-typography-spacing-vertical: 2.25rem;
+}
+
+h4 {
+ --pico-font-size: 1.25rem;
+ --pico-typography-spacing-vertical: 1.874rem;
+}
+
+h5 {
+ --pico-font-size: 1.125rem;
+ --pico-typography-spacing-vertical: 1.6875rem;
+}
+
+// Forms elements
+[type="checkbox"],
+[type="radio"] {
+ --pico-border-width: 2px;
+}
+
+[type="checkbox"][role="switch"] {
+ --pico-border-width: 3px;
+}
+
+nav details[role="list"] summary+ul {
+  overflow: hidden;
+}
+
+// html {
+//   // cursor: none;
+// }
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+}
+
+body,
+body>* {
+  transition: background-color 300ms ease;
+}
