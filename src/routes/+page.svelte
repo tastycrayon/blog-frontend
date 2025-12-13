@@ -18,14 +18,14 @@
 				<div class="col-12 col-md-6 d-flex align-items-start align-items-md-center column">
 					<div class="hgroup">
 						<h1 class="mb-1">
-							Hi, I'm<br />Markus
+							Hi, I'm Markus
 						</h1>
-						<big>A software engineer<br />with a lot of dedication</big>
+						<big>Software engineer focused on <br/>thoughtful design & solid engineering.</big>
 						<div>
 							<a
 								role="button"
 								href={PROJECTS_ROOT_URL}
-								class="my-2 w-auto primary outline"
+								class="my-4 w-auto primary outline"
 								on:mouseenter={setCursorToHamburger}
 								on:mouseleave={setCursorToDefault}><span>Check My Projects</span> +</a
 							>
@@ -51,22 +51,29 @@
 <!-- OPENGRAPH -->
 
 <style lang="scss">
+	// mixin
+	@use '$lib/styles/custom-variable.scss' as *;
 	h1,
 	big {
-		color: white;
+		// color: white;
+	}
+	:global(html[data-theme="light"]) .wrapper {
+		background-image: url('bg-light.webp');
+		.wrapper-overlay {
+			background: linear-gradient(to right, rgba(242, 255, 231, 0.73), rgba(105, 105, 105, 0.34));
+		}
 	}
 	.wrapper {
-		// background-image: url('index-banner.jpg');
-		background-image: url('https://res.cloudinary.com/mosiur404/image/upload/v1682134612/blog/background_tx2tmp.jpg');
+		background-image: url('bg-dark.webp');
 		background-size: cover;
 		background-position: center;
 		background-repeat: no-repeat;
-		& .wrapper-overlay {
+		.wrapper-overlay {
 			background: linear-gradient(to right, rgba(0, 0, 0, 0.73), rgba(0, 0, 0, 0));
 		}
 	}
-	// mixin
-	@import 'src/styles/custom-variable.scss';
+
+
 	h1 {
 		font-size: clamp(32px, 24px, 128px);
 		@include mq('tablet', min) {
