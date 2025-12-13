@@ -111,7 +111,7 @@
 
 			object-fit: cover;
 			filter: grayscale(1);
-			border: 1px solid var(--primary);
+			border: 1px solid var(--pico-primary);
 			transition: filter 0.3s linear, border-radius 0.3s ease;
 			&:hover {
 				border-radius: 10% / 25% 50%;
