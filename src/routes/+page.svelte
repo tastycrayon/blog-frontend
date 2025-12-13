@@ -58,13 +58,13 @@
 		// color: white;
 	}
 	:global(html[data-theme="light"]) .wrapper {
-		background-image: url('bg-light.webp');
+		background-image: url('/bg-light.webp');
 		.wrapper-overlay {
 			background: linear-gradient(to right, rgba(242, 255, 231, 0.73), rgba(105, 105, 105, 0.34));
 		}
 	}
 	.wrapper {
-		background-image: url('bg-dark.webp');
+		background-image: url('/bg-dark.webp');
 		background-size: cover;
 		background-position: center;
 		background-repeat: no-repeat;
